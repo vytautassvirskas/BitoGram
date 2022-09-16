@@ -11,11 +11,14 @@ const validate = (schema, req, res, next) => {
 
 	if (error){
 		switch (error.details[0].path[0]){
-			case "first_name":
+			case "firstName":
 				message = "Neteisingai nurodytas vardas"
 				break
-			case "last_name":
+			case "lastName":
 				message = "Neteisingai nurodyta pavardė"
+				break
+			case "userName":
+				message = "Neteisingai nurodyta slapyvardis"
 				break
 			case "email":
 				message = "Neteisingai nurodytas el. pašto adresas"
@@ -23,8 +26,11 @@ const validate = (schema, req, res, next) => {
 			case "password":
 				message = "Neteisingai nurodytas slaptažodis"
 				break
-			case "title":
+			case "caption":
 				message = "Pavadinimas negali būti tuščias"
+				break
+			case "image":
+				message = "Privaloma parinkti nuotrauką"
 				break
 			default:
 				message = "Neteisingai užpildyti laukeliai"
@@ -41,11 +47,8 @@ const validate = (schema, req, res, next) => {
 
 export const postValidator = (req, res, next) => {
 	const schema = Joi.object({
-		title: Joi.string().min(5).max(255).required(),
-		content: Joi.string().allow(''),
-		image: Joi.string().allow(''),
-		category: Joi.string().allow(''),
-		comment_count: Joi.number().allow('')
+		caption: Joi.string().required(),
+		image: Joi.string()
 	});
 
 	validate(schema, req, res, next);
@@ -53,8 +56,9 @@ export const postValidator = (req, res, next) => {
 
 export const registerValidator = (req, res, next) => {
 	const schema = Joi.object({
-		first_name: Joi.string().min(2).max(50).required(),
-		last_name: Joi.string().min(2).max(50).required(),
+		firstName: Joi.string().min(2).max(50).required(),
+		lastName: Joi.string().min(2).max(50).required(),
+		userName: Joi.string().min(2).max(50).required(),
 		email: Joi.string().email().required(),
 		password: Joi.string().min(6).max(12).required()
 	});
@@ -75,6 +79,7 @@ export const commentsValidator = (req, res, next) => {
 	const schema = Joi.object({
 		comment: Joi.string().min(5).required(),
 		postId: Joi.number().required()
+		// o userId nereiia??
 	});
 
 	validate(schema, req, res, next);

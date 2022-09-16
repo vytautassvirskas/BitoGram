@@ -44,10 +44,9 @@ router.post("/login",loginValidator, async (req,res)=>{
             req.session.loggedin = true,
             req.session.user={
                 id: user.id,
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-                role: user.role
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
             }
             res.json({
                 message: "Prisijungimas sėkmingas", 

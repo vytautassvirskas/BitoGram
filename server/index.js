@@ -4,6 +4,8 @@ import session from 'express-session'
 import database from "./database/connect.js";
 
 import Users from "./controller/users.js"
+import Posts from "./controller/posts.js"
+import Comments from "./controller/comments.js"
 
 
 const app = express();
@@ -38,6 +40,8 @@ app.use(session({
 
 // kontroleriu priskyrimas
 app.use("/api/users/", Users)
+app.use("/api/posts/", Posts)
+app.use("/api/comments/", Comments)
 
 
 //Paleidžiame serverį

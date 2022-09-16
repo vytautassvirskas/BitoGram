@@ -6,7 +6,7 @@ const Posts = (sequelize)=>{
             type: DataTypes.STRING,
             allowNull: false //neleidžiamas tuščias laukas - Standartinė reikšmė true
         },
-        photo: {
+        image: {
             type: DataTypes.STRING,
             allowNull: false
         }

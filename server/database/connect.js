@@ -12,7 +12,7 @@ const credentials = {
     host:"localhost",
     user:"root",
     password:"",
-    database:"botigram"
+    database:"bitogram"
 }
 try {
     // prisijungimas

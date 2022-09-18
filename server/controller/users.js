@@ -52,7 +52,6 @@ router.post("/login",loginValidator, async (req,res)=>{
                 message: "Prisijungimas sėkmingas", 
                 user: req.session.user 
             })
-            // res.send("Prisijungimas sėkmingas")
 
         } else{
             res.status(401).send("Nepavyko prisijungti")

@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-import MainContext from '../context/MainContext'
+import MainContext from '../../context/MainContext'
 import "./Login.css"
 
 const Login = () => {
@@ -17,8 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleForm = (e) => {
-		setForm({ ...form, [e.target.name]: e.target.value });
-        
+		setForm({ ...form, [e.target.name]: e.target.value });  
 	};
     
     const handleSubmit = (e) =>{
@@ -33,9 +31,10 @@ const Login = () => {
             })
 
             // navigate to main page
+            navigate("/explore")
         })
         .catch(error=>{
-            console.log(error.response.data);
+            console.log(error);
             setAlert({
                 message: error.response.data,
                 status: "danger"
@@ -56,38 +55,38 @@ const Login = () => {
             alt="phone"
             ></img>
         </div>
-        <div className='login-card'>
-            <div className='login'>
+        <div className='login-register-card'>
+            <div className='top'>
                 <h1 className='logo-text'>Bitogram</h1>
                 <form action="" onSubmit={(e) => handleSubmit(e)}>
-                    <div className='login-input-wrapper'>
+                    <div className='input-wrapper'>
                         {/* <label htmlFor='email'>Email</label> */}
                         <input 
                         id="email"
                         type="text"
                         name="email"
                         onChange={handleForm}
-                        placeholder="El. paštas"
+                        placeholder="Email"
                         />
                     </div>
-                    <div className='login-input-wrapper'>
+                    <div className='input-wrapper'>
                         {/* <label htmlFor='password'>Password</label> */}
                         <input 
                         id="password"
                         type="password"
                         name="password"
                         onChange={handleForm}
-                        placeholder="Slaptažodis"
+                        placeholder="Password"
                         />                   
                     </div>
-                    <button className='login-btn'>Log in</button>
+                    <button className='main-btn'>Log in</button>
                 </form>
             </div>
-            <div className='register'>
-                <h2>Don't have an account? 
+            <div className='bottom'>
+                <h2>Have an account? 
                     <Link 
                     to={"/register"}
-                    className="register-link"> Sign up</Link> 
+                    className="main-link"> Sign up</Link> 
                 </h2>
             </div>
             <div className='store'></div>

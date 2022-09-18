@@ -1,0 +1,16 @@
+.register-container{
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto 0;
+}
+
+
+.add-text{
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto 20px;
+    color: rgb(142,142,142);
+}

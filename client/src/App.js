@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import Login from "./pages/Login"
+import Login from "./pages/Login/Login"
+import Register from './pages/Register/Register';
+
 import Alert from "./components/Alert/Alert"
 import './App.css';
 import MainContext from './context/MainContext';
@@ -21,6 +23,7 @@ function App() {
       <Alert/>
       <Routes>
         <Route path="/" element={<Login/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
       </Routes>
     </div>
    </MainContext.Provider>

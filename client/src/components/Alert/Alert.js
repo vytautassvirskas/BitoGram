@@ -1,6 +1,8 @@
 import React,{useContext, useEffect} from 'react'
 import MainContext from "../../context/MainContext"
 
+import "./Alert.css"
+
 const Alert = () => {
     const {alert, setAlert} = useContext(MainContext)
 
@@ -16,7 +18,7 @@ const Alert = () => {
     },[alert, setAlert])
 
   return alert.message&&(
-    <div className={'klase1 klase2-'+alert.status}>
+    <div className={'message '+alert.status}>
       {alert.message}
     </div>
   )

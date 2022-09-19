@@ -11,11 +11,13 @@ const Header = () => {
   console.log(userInfo)
   return (
     <header className='header'>
-      <h1 className='header-logo'>Bitogram</h1>
+      <Link className='nav-link'>
+        <h1 className='header-logo'>Bitogram</h1>
+      </Link>
       <nav className='nav'>
         <ul className='navbar'>
           <li className='nav-item'>
-            <Link className='nav-link'>
+            <Link to="/explorer" className='nav-link'>
               <img 
               className='nav-img' 
               src='https://www.svgrepo.com/show/20/user.svg' 

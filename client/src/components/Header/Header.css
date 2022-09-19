@@ -1,9 +1,39 @@
 .header{
     background-color: #833AB4;
+    padding: 5px 40px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-logo{
     font-family: 'Cookie', cursive;
     font-size: 52px;
     margin: 28px 0;
+    color: white;
+}
+
+.navbar{
+    display:flex;
+    gap:20px
+}
+
+.nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style:none;
+}
+.nav-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-img{
+    height: 30px;
+    color: white;
+
 }

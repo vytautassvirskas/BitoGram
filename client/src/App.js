@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+
 
 import Header from './components/Header/Header'
 import Login from "./pages/Login/Login"
 import Register from './pages/Register/Register';
 import Logout from "./pages/Logout/Logout"
+import Explore from "./pages/Explore/Explore"
 
 import Alert from "./components/Alert/Alert"
 import './App.css';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path='/logout' element={<Logout/>}></Route>
+        <Route path='/explore' element={<Explore/>}></Route>
       </Routes>
     </div>
    </MainContext.Provider>

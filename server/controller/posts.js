@@ -9,9 +9,11 @@ import { auth } from "../middleware/auth.js"
 const router = express.Router();
 
 // visos visu vartotoju nuotraukos
-router.get("/explore",auth, async (req,res)=>{
+router.get("/",auth, async (req,res)=>{
     try {
-        const posts = await db.Posts.findAll()
+        const posts = await db.Posts.findAll({
+            include: db.Users
+        })
         res.json(posts)
     } catch {
 

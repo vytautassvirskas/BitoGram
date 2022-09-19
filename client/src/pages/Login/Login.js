@@ -7,13 +7,15 @@ import MainContext from '../../context/MainContext'
 import "./Login.css"
 
 const Login = () => {
-    const {setAlert} =useContext(MainContext)
+    const {setAlert,loggedIn,setLoggedIn,setUserInfo } =useContext(MainContext)
     const [ form, setForm ] = useState({
 		email: '',
 		password: ''
 	});
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
+    loggedIn&&navigate("/explorer")
 
     const handleForm = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });  
@@ -24,13 +26,14 @@ const Login = () => {
 
         axios.post('/api/users/login', form)
         .then(resp=>{
+            setLoggedIn(true);
+            setUserInfo(resp.data.user)
             console.log(resp.data);
             setAlert({
                 message: resp.data.message,
                 status: "success"
             })
 
-            // navigate to main page
             navigate("/explore")
         })
         .catch(error=>{

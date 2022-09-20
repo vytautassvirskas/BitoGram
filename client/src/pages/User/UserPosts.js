@@ -49,18 +49,22 @@ const User = () => {
             </Link>
             </div>
             <div className='card-bottom'>
-            <div className='card-actions'>
-                <img
-                className='card-img' 
-                src="https://www.svgrepo.com/show/13666/heart.svg" 
-                alt="like-logo" />
-                <img
-                className='card-img' 
-                src="https://www.svgrepo.com/show/357540/comment.svg" 
-                alt="comment-logo" />
+                <div className='card-actions'>
+                    <img
+                    className='card-img' 
+                    src="https://www.svgrepo.com/show/13666/heart.svg" 
+                    alt="like-logo" />
+                    <img
+                    className='card-img' 
+                    src="https://www.svgrepo.com/show/357540/comment.svg" 
+                    alt="comment-logo" />
+                </div>
             </div>
-            <p className='card-caption'><span className='card-username'>{userInfo.userName}</span>{post.caption}</p>
+            <div className='card-bottom'>
+                <p className='card-username'>{userInfo.userName}</p>
+                <p className='card-caption'>{post.caption}</p>
             </div>
+            
 
         </div>
         

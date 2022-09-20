@@ -26,7 +26,7 @@ const Explore = () => {
   },[navigate])
   return (
     <div className='posts-container'>
-    {posts.length>0 ? (posts.map(post=>
+    {posts && posts.map(post=>
       <div key={post.id} className='card'>
         <div className='card-top'>
           <div className='user-info'>
@@ -69,9 +69,7 @@ const Explore = () => {
         </div>
 
       </div>
-      ))
-      : 
-      <h1 className='error-message'>Nėra įketa nuotraukų</h1>
+      )
       }
     </div>
   )

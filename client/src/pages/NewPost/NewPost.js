@@ -24,7 +24,7 @@ const NewPost = () => {
         axios.post("/api/posts/new/", formData)
         .then(resp=>{
             console.log(resp.data);
-            navigate("/user/")
+            navigate("/user/posts/")
         })
         .catch(error=>{
             console.log(error);

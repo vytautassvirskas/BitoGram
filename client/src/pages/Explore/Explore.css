@@ -25,12 +25,18 @@
    align-items: center;
    width: 90%;
    padding: 10px 0;
+   margin: 0 auto;
 }
 .user-info{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+.card-link{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }
 .card-username{
     font-weight: bold;
@@ -48,28 +54,19 @@
 }
 .card-bottom{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    gap: 10px;
     width: 90%;
 }
 
 .card-actions{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    width: 100%;
+    width: 90%;
     padding: 10px 0;
+    margin: 0 auto;
     
-}
-
-.card-caption{
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    padding-bottom: 10px ;
 }

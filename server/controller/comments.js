@@ -5,12 +5,10 @@ import {commentsValidator} from "../middleware/validate.js"
 
 const router = express.Router();
 
-router.post("/loggedIn-user/new/", auth,commentsValidator, async (req, res) => {
-  const user_id=1
-
+router.post("/new/", auth,commentsValidator, async (req, res) => {
+  console.log(req.body)
     try {
-        req.body.userId = user_id
-        // req.body.userId =req.session.user.id
+        req.body.userId =req.session.user.id
         await db.Comments.create(req.body)
         res.send("Komentaras sėkmingai išsaugotas")
 

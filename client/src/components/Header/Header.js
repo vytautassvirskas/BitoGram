@@ -11,13 +11,13 @@ const Header = () => {
   console.log(userInfo)
   return (
     <header className='header'>
-      <Link className='nav-link'>
+      <Link to="/explore" className='nav-link'>
         <h1 className='header-logo'>Bitogram</h1>
       </Link>
       <nav className='nav'>
         <ul className='navbar'>
           <li className='nav-item'>
-            <Link to="/explorer" className='nav-link'>
+            <Link to="/user" className='nav-link'>
               <img 
               className='nav-img' 
               src='https://www.svgrepo.com/show/20/user.svg' 
@@ -38,7 +38,7 @@ const Header = () => {
               alt='exit-logo'
               >
               </img>
-              Atsijungti
+              Log out
             </Link>
           </li>
         </ul>

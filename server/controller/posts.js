@@ -22,7 +22,8 @@ router.get("/",auth, async (req,res)=>{
 })
 
 // prisijungusio vartotojo nuotraukos
-router.get("/loggedIn-user-posts/:id",auth, async (req,res)=>{
+router.get("/user/:id",auth, async (req,res)=>{
+    console.log(req.params)
     try {
         const posts = await db.Posts.findAll({
             where:{userId: req.params.id}

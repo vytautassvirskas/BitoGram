@@ -1,11 +1,11 @@
 import express from "express";
 import db from "../database/connect.js"
 import {auth} from "../middleware/auth.js"
-import {commentsValidator} from "../middleware/validate.js"
+// import {commentsValidator} from "../middleware/validate.js"
 
 const router = express.Router();
 
-router.post("/new/", auth,commentsValidator, async (req, res) => {
+router.post("/new/", auth, async (req, res) => {
   console.log(req.body)
     try {
         req.body.userId =req.session.user.id

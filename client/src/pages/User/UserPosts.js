@@ -19,10 +19,10 @@ const User = () => {
             console.log(error);
 
             if(error.response.status===401){
-				setTimeout(() => navigate("/"),2000)
+				navigate("/")
 			}
         })
-      },[userInfo.id])
+      },[userInfo.id,navigate])
   return (
         <div className='posts-container'>
         {posts && posts.map(post=>

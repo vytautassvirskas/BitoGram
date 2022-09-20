@@ -86,4 +86,5 @@ export const commentsValidator = (req, res, next) => {
 	validate(schema, req, res, next);
 };
 
+
 export default validate;

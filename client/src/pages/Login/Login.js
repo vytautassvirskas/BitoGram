@@ -15,7 +15,7 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    loggedIn&&navigate("/explore")
+    // loggedIn&&navigate("/explore")
 
     const handleForm = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });  

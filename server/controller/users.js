@@ -31,6 +31,7 @@ router.post("/register",registerValidator, async (req,res)=>{
 })
 
 router.post("/login",loginValidator, async (req,res)=>{
+    console.log(req.body)
     try {
         const user = await db.Users.findOne({
             where: {

@@ -1,8 +1,8 @@
 import {DataTypes} from "sequelize"
 
-const Comments = (sequelize)=>{
+const Likes = (sequelize)=>{
     const Schema = {
-        comment: {
+        like: {
             type: DataTypes.TEXT,
             allowNull: false
         },
@@ -11,7 +11,7 @@ const Comments = (sequelize)=>{
             allowNull: false
         }
     }
-    return sequelize.define("comments", Schema)
+    return sequelize.define("likes", Schema)
 }
 
-export default Comments
+export default Likes

@@ -1,12 +1,9 @@
-import React,{useEffect, useState,useContext} from 'react'
+import React,{useEffect, useState} from 'react'
 import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
-import MainContext from '../../context/MainContext'
-
 import "./Explore.css"
 const Explore = () => {
-  const {setAlert} =useContext(MainContext)
   const [posts, setPosts] = useState([])
 	const navigate = useNavigate();
 

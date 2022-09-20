@@ -4,6 +4,7 @@ import mysql from "mysql2/promise"
 import Users from "../model/users.js"
 import Posts from "../model/posts.js"
 import Comments from "../model/comments.js"
+import Likes from "../model/likes.js"
 
 
 
@@ -28,11 +29,18 @@ try {
     database.Users = Users(sequelize)
     database.Posts = Posts(sequelize)
     database.Comments = Comments(sequelize)
+    database.Likes = Likes(sequelize)
+
 
     database.Users.hasMany(database.Posts)
     database.Posts.belongsTo(database.Users)
+
     database.Posts.hasMany(database.Comments)
-    database.Comments.belongsTo(database.Users)
+    database.Comments.belongsTo(database.Posts)
+
+    database.Posts.hasMany(database.Likes)
+    database.Likes.belongsTo(database.Posts)
+
 
     await sequelize.sync({alter: true}) 
 } catch (error)  {

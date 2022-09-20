@@ -6,6 +6,7 @@ import database from "./database/connect.js";
 import Users from "./controller/users.js"
 import Posts from "./controller/posts.js"
 import Comments from "./controller/comments.js"
+import Likes from "./controller/likes.js"
 
 
 const app = express();
@@ -42,7 +43,7 @@ app.use(session({
 app.use("/api/users/", Users)
 app.use("/api/posts/", Posts)
 app.use("/api/comments/", Comments)
-
+app.use("/api/likes/", Likes)
 
 //Paleidžiame serverį
 app.listen(3000)

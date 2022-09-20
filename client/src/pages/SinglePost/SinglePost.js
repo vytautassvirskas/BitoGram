@@ -1,4 +1,4 @@
-import React,{useContext, useState, useEffect} from 'react'
+import React,{ useState, useEffect} from 'react'
 import {useParams,Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
@@ -7,11 +7,11 @@ import "./SinglePost.css"
 const SinglePost = () => {
     const {id}=useParams()
     const [post, setPost] = useState({})
-    const [comment, setComment] =useState({
-
-    })
+    const [comment, setComment] =useState("")
+    const [refresh, setRefresh] = useState(false)
 
     const navigate=useNavigate()
+
     useEffect(()=>{
         axios.get("/api/posts/"+id)
         .then(resp=>{
@@ -25,13 +25,15 @@ const SinglePost = () => {
 				setTimeout(() => navigate("/"),2000)
 			}
         })
-    },[])
+    },[refresh,id, navigate])
 
     
     const handleSubmit = (e) =>{
         e.preventDefault()
         axios.post("/api/comments/new/", {comment, postId: id})
         .then(resp=>{
+            setComment('')
+            setRefresh(!refresh)
             console.log(resp.data);
         })
         .catch(error=>{
@@ -68,6 +70,16 @@ const SinglePost = () => {
                 alt="more" />
             </div>
             <div className='comment-section'>
+                {post.comments && post.comments.map(comment=>
+                    <div className='comment-wrapepr' key={comment.id}>
+                        <div className='comment-photo-wrapper'>
+                            <img src="https://www.svgrepo.com/show/361411/account.svg" alt="user" />
+                        </div>
+                        <p className='comment-author'>{comment.userName}</p>
+                        <p>{comment.comment}</p>
+                        
+                    </div>
+                )}
                 
             </div>
             <div className='card-actions'>
@@ -87,8 +99,7 @@ const SinglePost = () => {
                     alt="emoji" />
                 </div>
                 <textarea className='comment-text-area'
-                name="comment" 
-                id="comment" 
+                name="comment"  
                 rows="1"
                 placeholder='Add a comment...'
                 onChange={(e)=>setComment(e.target.value)}></textarea>

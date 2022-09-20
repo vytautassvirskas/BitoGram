@@ -15,7 +15,7 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    loggedIn&&navigate("/explorer")
+    loggedIn&&navigate("/explore")
 
     const handleForm = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });  
@@ -33,7 +33,6 @@ const Login = () => {
                 message: resp.data.message,
                 status: "success"
             })
-
             navigate("/explore")
         })
         .catch(error=>{

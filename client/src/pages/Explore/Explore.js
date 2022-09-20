@@ -1,9 +1,12 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
+import MainContext from '../../context/MainContext'
+
 import "./Explore.css"
 const Explore = () => {
+  const {setAlert} =useContext(MainContext)
   const [posts, setPosts] = useState([])
 	const navigate = useNavigate();
 
@@ -17,13 +20,13 @@ const Explore = () => {
       console.log(error);
 
       if(error.response.status===401){
-				setTimeout(() => navigate("/"),2000)
+				navigate("/")
 			}
     })
   },[navigate])
   return (
     <div className='posts-container'>
-    {posts && posts.map(post=>
+    {posts.length>0 ? (posts.map(post=>
       <div key={post.id} className='card'>
         <div className='card-top'>
           <div className='user-info'>
@@ -66,8 +69,10 @@ const Explore = () => {
         </div>
 
       </div>
-      
-      )}
+      ))
+      : 
+      <h1 className='error-message'>Nėra įketa nuotraukų</h1>
+      }
     </div>
   )
 }

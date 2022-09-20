@@ -60,7 +60,8 @@ export const registerValidator = (req, res, next) => {
 		lastName: Joi.string().min(2).max(50).required(),
 		userName: Joi.string().min(2).max(50).required(),
 		email: Joi.string().email().required(),
-		password: Joi.string().min(6).max(12).required()
+		password: Joi.string().min(6).max(12).required(),
+		
 	});
 
 	validate(schema, req, res, next);
@@ -79,7 +80,7 @@ export const commentsValidator = (req, res, next) => {
 	const schema = Joi.object({
 		comment: Joi.string().min(5).required(),
 		postId: Joi.number().required()
-		// o userId nereiia??
+
 	});
 
 	validate(schema, req, res, next);

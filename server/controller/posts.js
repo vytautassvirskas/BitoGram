@@ -23,7 +23,6 @@ router.get("/",auth, async (req,res)=>{
 
 // prisijungusio vartotojo nuotraukos
 router.get("/user/:id",auth, async (req,res)=>{
-    console.log(req.params)
     try {
         const posts = await db.Posts.findAll({
             where:{userId: req.params.id}
@@ -36,18 +35,14 @@ router.get("/user/:id",auth, async (req,res)=>{
 })
 
 // posto ikelimas
-router.post("/loggedIn-user/new/", auth, upload.single("image"), postValidator, async(req,res)=>{
-    console.log("ar rodo?");
-    console.log(req.body);
-    console.log(req.file);
-
-    const user_id=2
+router.post("/new/", auth, upload.single("image"), postValidator, async(req,res)=>{
+    console.log(req.body)
     try {
         if(req.file)
             req.body.image = "/uploads/"+req.file.filename
             console.log(req.body);
 
-        req.body.userId=user_id
+        req.body.userId=req.session.user.id
         new db.Posts(req.body).save()
         res.send("Įrašas sėkmingai sukurtas")
     } catch {

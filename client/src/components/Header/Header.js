@@ -17,7 +17,17 @@ const Header = () => {
       <nav className='nav'>
         <ul className='navbar'>
           <li className='nav-item'>
-            <Link to="/user" className='nav-link'>
+            <Link to="/user/new" className='nav-link'>
+              <img 
+              className='nav-img' 
+              src='https://www.svgrepo.com/show/333478/add-r.svg' 
+              alt="upload-logo"
+              >
+              </img>
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to="/user/posts" className='nav-link'>
               <img 
               className='nav-img' 
               src='https://www.svgrepo.com/show/20/user.svg' 

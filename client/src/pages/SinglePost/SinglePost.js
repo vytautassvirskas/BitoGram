@@ -99,6 +99,7 @@ const SinglePost = () => {
                     alt="emoji" />
                 </div>
                 <textarea className='comment-text-area'
+                value={comment}
                 name="comment"  
                 rows="1"
                 placeholder='Add a comment...'

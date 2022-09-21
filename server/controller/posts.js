@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/",auth, async (req,res)=>{
     try {
         const posts = await db.Posts.findAll({
-            include: db.Users
+            include: [db.Users, db.Likes, db.Comments]
         })
         res.json(posts)
     } catch {
@@ -25,7 +25,21 @@ router.get("/",auth, async (req,res)=>{
 router.get("/user/:id",auth, async (req,res)=>{
     try {
         const posts = await db.Posts.findAll({
-            where:{userId: req.params.id}
+            where:{userId: req.params.id},
+            include: [{
+                model: db.Users,
+            },
+            {
+                model: db.Likes,
+            },
+            {
+                model: db.Comments,
+                where: {
+                    userName: req.session.user.userName
+                }
+            }]
+            // taip buvo is pradziu
+            // [db.Users, db.Likes, db.Comments]
         })
         res.json(posts)
     } catch {
@@ -57,9 +71,9 @@ router.get("/:id",auth, async (req,res)=>{
         const post = await db.Posts.findByPk(req.params.id, {
             include: [db.Users, db.Comments] 
             // include: [
-            //     {   model: db.Users,
-            //         attributes: { exclude: ['password', 'role', 'email', 'updatedAt'] }
-            //     }, 
+                // {   model: db.Users,
+                //     attributes: { exclude: ['password', 'role', 'email', 'updatedAt'] }
+                // }, 
             //     { 
             //         model: db.Comments, 
             //         include: { 
@@ -79,20 +93,9 @@ router.get("/:id",auth, async (req,res)=>{
    
 })
 
-// vienas blogo irasas konkretaus vartotojo
-router.get("/userpost/:id",auth, async (req,res)=>{
-    try {
-        const post = await db.Posts.findByPk(req.params.id, {
-            include: db.Users
-        })
-        res.json(post)
-    } catch (error) {
-        res.status(500).send("Įvyko serverio klaida")
-    }
-   
-})
 
-router.put("/loggedIn-user/edit/:id", auth, upload.single("image"), postValidator, async (req,res)=>{
+
+router.put("/edit/:id", auth, upload.single("image"), postValidator, async (req,res)=>{
     try {
         console.log(req.params.id);
         const post = await db.Posts.findByPk(req.params.id)
@@ -104,7 +107,7 @@ router.put("/loggedIn-user/edit/:id", auth, upload.single("image"), postValidato
     
 })
 
-router.delete("/loggedIn-user/delete/:id",auth,async(req,res)=>{
+router.delete("/delete/:id",auth,async(req,res)=>{
     try {
         const post = await db.Posts.findByPk(req.params.id)
         post.destroy()

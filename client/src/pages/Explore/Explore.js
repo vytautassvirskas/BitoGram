@@ -5,6 +5,7 @@ import axios from "axios"
 import "./Explore.css"
 const Explore = () => {
   const [posts, setPosts] = useState([])
+  const [like, setLike] = useState("https://www.svgrepo.com/show/13666/heart.svg")
 	const navigate = useNavigate();
 
   useEffect(()=>{
@@ -21,6 +22,20 @@ const Explore = () => {
 			}
     })
   },[navigate])
+
+  const handleClick = (id) =>{
+    axios.post("/api/likes/new/", {like: "https://www.svgrepo.com/show/402155/red-heart.svg", postId: id})
+    .then(resp=>{
+      setLike("https://www.svgrepo.com/show/402155/red-heart.svg")
+      // setComment('')
+      // setRefresh(!refresh)
+      console.log(resp.data);
+  })
+  .catch(error=>{
+      console.log(error);
+  })
+
+  }
   return (
     <div className='posts-container'>
     {posts && posts.map(post=>
@@ -52,9 +67,12 @@ const Explore = () => {
         </div>
         <div className='card-actions'>
           <img
-          className='card-img' 
-          src="https://www.svgrepo.com/show/13666/heart.svg" 
-          alt="like-logo" />
+          className={'card-img'+" "+"img-hover"}
+          src={like}
+          // src="https://www.svgrepo.com/show/13666/heart.svg" 
+          // src="https://www.svgrepo.com/show/402155/red-heart.svg"
+          alt="like-logo" 
+          onClick={()=>handleClick(post.id)}/>
           <img
           className='card-img' 
           src="https://www.svgrepo.com/show/357540/comment.svg" 

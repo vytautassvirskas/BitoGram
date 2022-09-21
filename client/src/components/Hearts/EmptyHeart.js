@@ -1,6 +1,6 @@
 import React from 'react'
 
-import "./EmptyHeart.css"
+import "./Heart.css"
 
 const EmptyHeart = () => {
   return (

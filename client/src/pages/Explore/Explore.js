@@ -5,7 +5,8 @@ import axios from "axios"
 import MainContext from "../../context/MainContext.js";
 import "./Explore.css"
 
-import EmptyHeart from '../../components/EmptyHeart/EmptyHeart.js';
+import EmptyHeart from '../../components/Hearts/EmptyHeart.js';
+import FullHeart from '../../components/Hearts/FullHeart.js';
 
 
 const Explore = () => {
@@ -78,20 +79,10 @@ const Explore = () => {
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
             {post.likes.length>0?
             (post.likes.find(like=>like.userName===userInfo.userName)?(
-              <img
-              className={'card-img'+" "+"img-hover"}
-              src="https://www.svgrepo.com/show/141727/heart.svg" 
-              alt="like-logo" 
-              />  
+              <FullHeart/> 
             ):(
-              <img
-              className={'card-img'+" "+"img-hover"}
-              src="https://www.svgrepo.com/show/13666/heart.svg" 
-              alt="like-logo" 
-              />  
-            )
-           
-            ):( 
+              <EmptyHeart/>
+            )):( 
               <EmptyHeart/>
             )}
            

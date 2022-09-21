@@ -14,6 +14,12 @@ const Users = (sequelize)=>{
             type: DataTypes.STRING,
             allowNull: false
         },
+        description: {
+            type: DataTypes.TEXT
+        },
+        photo: {
+            type: DataTypes.STRING
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false

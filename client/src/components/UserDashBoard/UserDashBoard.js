@@ -4,14 +4,23 @@ import {Link} from "react-router-dom"
 import "./UserDashBoard.css"
 
 const UserDashBoard = (props) => {
-    const {userId, userName, firstName, lastName}=props
+    const {userId, userName, firstName, lastName,userImage}=props
   return (
     <div className='user-dash'>
         <div className='user-dash-image-wrapper' >
-            <img
-            className='user-dash-image'
-            src="https://www.svgrepo.com/show/361411/account.svg"
-            alt="user" />
+            {userImage ? (
+                 <img
+                 src={userImage}
+                 alt="user" />
+            )
+            :
+            (
+                <img
+                src="https://www.svgrepo.com/show/361411/account.svg"
+                alt="user" />
+            )
+            }
+           
         </div>
         <div className='user-dash-info'>
             <div className='user-name-settings'>
@@ -26,8 +35,7 @@ const UserDashBoard = (props) => {
             </div>
             <div className='user-info'>
                 <h3>{firstName+" "+lastName}</h3>
-                <p>Add description about you in settings</p>
-
+                <p>Add some description...</p>
             </div>
         </div>
     </div>

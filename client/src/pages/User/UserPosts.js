@@ -11,6 +11,7 @@ const User = () => {
     const {userInfo}=useContext(MainContext)
     const [posts, setPosts] = useState([])
     const navigate=useNavigate()
+    console.log(userInfo);
     useEffect(()=>{
         axios.get("/api/posts/user/"+userInfo.id)
         .then(resp=>{
@@ -32,6 +33,7 @@ const User = () => {
             userName={userInfo.userName} 
             firstName={userInfo.firstName} 
             lastName={userInfo.lastName}
+            userImage={userInfo.image}
             />
         {posts && posts.map(post=>
         <div key={post.id} className='card'>

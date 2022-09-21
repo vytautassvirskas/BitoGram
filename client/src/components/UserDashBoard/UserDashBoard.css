@@ -11,7 +11,7 @@
     width: 33%;
 }
 
-.user-dash-image{
+.user-dash-image-wrapper img{
     width: 150px;
     height: 150px;
     border-radius: 50%;

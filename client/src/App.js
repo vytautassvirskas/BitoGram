@@ -10,6 +10,7 @@ import Register from './pages/Register/Register';
 import Logout from "./pages/Logout/Logout"
 import Explore from "./pages/Explore/Explore"
 import UserPosts from "./pages/User/UserPosts"
+import EditUser from './pages/User/EditUser';
 import NotFound from './pages/NotFound/NotFound';
 import SinglePost from './pages/SinglePost/SinglePost';
 import NewPost from './pages/NewPost/NewPost';
@@ -51,6 +52,7 @@ function App() {
         <Route path='/user/posts' element={<UserPosts/>}></Route>
         <Route path="/post/:id" element={<SinglePost/>}></Route>
         <Route path='/user/new' element={<NewPost/>}></Route>
+        <Route path='/user/edit/:id' element={<EditUser/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
 
       </Routes>

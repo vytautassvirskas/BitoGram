@@ -1,38 +1,13 @@
 import express from "express";
 import db from "../database/connect.js"
 import bcrypt from 'bcrypt';
-import { registerValidator, loginValidator } from "../middleware/validate.js";
+import { registerValidator, loginValidator,userEditingValidator } from "../middleware/validate.js";
 import {auth} from "../middleware/auth.js"
+import upload from "../middleware/multer.js"
 
 const router = express.Router();
 
 const saltRounds = 10;
-
-// paieska tam tikro vartotojo nuotrauku
-router.get("/search/:keyword",auth, async (req,res)=>{
-    console.log(req.params)
-    try {
-        const posts = await db.Posts.findAll({
-            where: {
-                '$Accounts.userName$': { [Op.like]: `%${req.params.keyword}%`}
-              },
-              include: [{
-                model: db.Users,
-                as: 'Accounts'
-              }]
-            // include: [db.Users, db.Likes, db.Comments],
-            // where:{
-            //     userName: {
-            //         [Op.like]: `%${req.params.keyword}%`
-            //     }
-            // }
-        })
-        res.json(posts)
-    } catch {
-
-        res.status(500).send("Įvyko serverio klaida")
-    }
-})
 
 router.post("/register",registerValidator, async (req,res)=>{
     try {
@@ -66,7 +41,7 @@ router.post("/login",loginValidator, async (req,res)=>{
         if(!user){
             return res.status(401).send("Toks vartotojas nerastas")
         }
-    
+        
         if(await bcrypt.compare(req.body.password, user.password)){
             req.session.loggedin = true,
             req.session.user={
@@ -74,6 +49,8 @@ router.post("/login",loginValidator, async (req,res)=>{
                 firstName: user.firstName,
                 lastName: user.lastName,
                 userName: user.userName,
+                description: user.description,
+                image: user.image,
                 email: user.email
             }
             res.json({
@@ -105,6 +82,59 @@ router.get("/check-auth",auth, async(req,res)=>{
         res.status().send("Įvyko serverio klaida")
     }
 })
+
+// paieska tam tikro vartotojo nuotrauku
+router.get("/search/:keyword",auth, async (req,res)=>{
+    console.log(req.params)
+    try {
+        const posts = await db.Posts.findAll({
+            where: {
+                '$Accounts.userName$': { [Op.like]: `%${req.params.keyword}%`}
+              },
+              include: [{
+                model: db.Users,
+                as: 'Accounts'
+              }]
+            // include: [db.Users, db.Likes, db.Comments],
+            // where:{
+            //     userName: {
+            //         [Op.like]: `%${req.params.keyword}%`
+            //     }
+            // }
+        })
+        res.json(posts)
+    } catch {
+
+        res.status(500).send("Įvyko serverio klaida")
+    }
+})
+
+router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, async (req,res)=>{
+    try {
+        const user = await db.Users.findByPk(req.params.id)
+        if(req.file)
+            req.body.image = "/uploads/"+req.file.filename
+        user.update(req.body)
+        res.send("Profilis sėkmingai atnaujintas");
+    } catch (error) {
+        res.status(500).send("Įvyko serverio klaida")
+    }
+    
+})
+
+// router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, async(req,res)=>{
+//     try {
+//         if(req.file)
+//             req.body.image = "/uploads/"+req.file.filename
+
+//         req.body.userId=req.session.user.id
+//         new db.Posts(req.body).save()
+//         res.send("Įrašas sėkmingai sukurtas")
+//     } catch {
+//         res.status(500).send("Įvyko serverio klaida")
+//     }
+    
+// })
 
 
 export default router

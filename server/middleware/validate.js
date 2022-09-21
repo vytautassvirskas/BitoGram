@@ -59,6 +59,8 @@ export const registerValidator = (req, res, next) => {
 		firstName: Joi.string().min(2).max(50).required(),
 		lastName: Joi.string().min(2).max(50).required(),
 		userName: Joi.string().min(2).max(50).required(),
+		description:Joi.string().allow(""),
+		image: Joi.string().allow(""),
 		email: Joi.string().email().required(),
 		password: Joi.string().min(6).max(12).required(),
 		
@@ -71,6 +73,19 @@ export const loginValidator = (req, res, next) => {
 	const schema = Joi.object({
 		email: Joi.string().email().required(),
 		password: Joi.string().min(6).max(12).required()
+	});
+
+	validate(schema, req, res, next);
+};
+
+export const userEditingValidator = (req, res, next) => {
+	const schema = Joi.object({
+		firstName: Joi.string().min(2).max(50).required(),
+		lastName: Joi.string().min(2).max(50).required(),
+		userName: Joi.string().min(2).max(50).required(),
+		description:Joi.string().allow(""),
+		image: Joi.string().allow("")
+		
 	});
 
 	validate(schema, req, res, next);

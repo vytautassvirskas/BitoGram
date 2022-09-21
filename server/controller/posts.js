@@ -32,12 +32,13 @@ router.get("/user/:id",auth, async (req,res)=>{
             {
                 model: db.Likes,
             },
-            {
-                model: db.Comments,
-                where: {
-                    userName: req.session.user.userName
-                }
-            }]
+            // {
+            //     model: db.Comments,
+            //     where: {
+            //         userName: req.session.user.userName
+            //     }
+            // }
+        ]
         })
         res.json(posts)
     } catch {

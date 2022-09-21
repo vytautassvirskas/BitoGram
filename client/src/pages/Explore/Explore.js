@@ -1,11 +1,18 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
+import MainContext from "../../context/MainContext.js";
 import "./Explore.css"
+
+import EmptyHeart from '../../components/EmptyHeart/EmptyHeart.js';
+
+
 const Explore = () => {
+  const {userInfo } =useContext(MainContext)
   const [posts, setPosts] = useState([])
-  const [like, setLike] = useState("https://www.svgrepo.com/show/13666/heart.svg")
+  const [likes, setLikes] = useState([])
+  const [liked, setLiked] = useState(false)
 	const navigate = useNavigate();
 
   useEffect(()=>{
@@ -21,14 +28,15 @@ const Explore = () => {
 				navigate("/")
 			}
     })
-  },[navigate])
+  },[navigate, liked])
+
 
   const handleClick = (id) =>{
-    axios.post("/api/likes/new/", {like: "https://www.svgrepo.com/show/402155/red-heart.svg", postId: id})
+    axios.post("/api/likes/new/", {like: "1", postId: id})
     .then(resp=>{
-      setLike("https://www.svgrepo.com/show/402155/red-heart.svg")
-      // setComment('')
-      // setRefresh(!refresh)
+      setLiked(!liked)
+      setLikes(resp.data)
+
       console.log(resp.data);
   })
   .catch(error=>{
@@ -65,14 +73,29 @@ const Explore = () => {
             alt="post" />
           </Link>
         </div>
+
         <div className='card-actions'>
-          <img
-          className={'card-img'+" "+"img-hover"}
-          src={like}
-          // src="https://www.svgrepo.com/show/13666/heart.svg" 
-          // src="https://www.svgrepo.com/show/402155/red-heart.svg"
-          alt="like-logo" 
-          onClick={()=>handleClick(post.id)}/>
+          <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
+            {post.likes.length>0?
+            (post.likes.find(like=>like.userName===userInfo.userName)?(
+              <img
+              className={'card-img'+" "+"img-hover"}
+              src="https://www.svgrepo.com/show/141727/heart.svg" 
+              alt="like-logo" 
+              />  
+            ):(
+              <img
+              className={'card-img'+" "+"img-hover"}
+              src="https://www.svgrepo.com/show/13666/heart.svg" 
+              alt="like-logo" 
+              />  
+            )
+           
+            ):( 
+              <EmptyHeart/>
+            )}
+           
+          </div>
           <img
           className='card-img' 
           src="https://www.svgrepo.com/show/357540/comment.svg" 

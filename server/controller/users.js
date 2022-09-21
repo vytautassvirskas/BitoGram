@@ -8,6 +8,32 @@ const router = express.Router();
 
 const saltRounds = 10;
 
+// paieska tam tikro vartotojo nuotrauku
+router.get("/search/:keyword",auth, async (req,res)=>{
+    console.log(req.params)
+    try {
+        const posts = await db.Posts.findAll({
+            where: {
+                '$Accounts.userName$': { [Op.like]: `%${req.params.keyword}%`}
+              },
+              include: [{
+                model: db.Users,
+                as: 'Accounts'
+              }]
+            // include: [db.Users, db.Likes, db.Comments],
+            // where:{
+            //     userName: {
+            //         [Op.like]: `%${req.params.keyword}%`
+            //     }
+            // }
+        })
+        res.json(posts)
+    } catch {
+
+        res.status(500).send("Įvyko serverio klaida")
+    }
+})
+
 router.post("/register",registerValidator, async (req,res)=>{
     try {
         const userExists=await db.Users.findOne({

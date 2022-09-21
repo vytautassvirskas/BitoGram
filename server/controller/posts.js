@@ -38,8 +38,6 @@ router.get("/user/:id",auth, async (req,res)=>{
                     userName: req.session.user.userName
                 }
             }]
-            // taip buvo is pradziu
-            // [db.Users, db.Likes, db.Comments]
         })
         res.json(posts)
     } catch {
@@ -70,21 +68,25 @@ router.get("/:id",auth, async (req,res)=>{
     try {
         const post = await db.Posts.findByPk(req.params.id, {
             include: [db.Users, db.Comments] 
-            // include: [
-                // {   model: db.Users,
-                //     attributes: { exclude: ['password', 'role', 'email', 'updatedAt'] }
-                // }, 
-            //     { 
-            //         model: db.Comments, 
-            //         include: { 
-            //             model: db.Users,
+
+            // ci pacioje viskas iskopinta is blogo posts routo
+            // 
+            //     include: [
+            //         {   model: db.Users,
             //             attributes: { exclude: ['password', 'role', 'email', 'updatedAt'] }
+            //         }, 
+            //         { 
+            //             model: db.Comments, 
+            //             include: { 
+            //                 model: db.Users,
+            //                 attributes: { exclude: ['password', 'role', 'email', 'updatedAt'] }
+            //             }
             //         }
+            //     ],
+            //     attributes: { 
+            //         exclude: ['postId', 'userId'] 
             //     }
-            // ],
-            // attributes: { 
-            //     exclude: ['postId', 'userId'] 
-            // }
+            // 
         })
         res.json(post)
     } catch (error) {

@@ -43,17 +43,6 @@
     font-size: 14px;
 }
 
-.card-img{
-    width: 25px;
-    height: 25px;
-
-}
-.img-hover:hover{
-    cursor: pointer;
-
-}
-
-
 .post-photo{
     width: 100%
 }

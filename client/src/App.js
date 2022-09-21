@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import axios from "axios";
 
 
@@ -32,8 +33,8 @@ function App() {
     .then(resp=>{
       setLoggedIn(true)
       setUserInfo(resp.data)
+      console.log(resp.data);
     })
-    
   },[])
 
   return (

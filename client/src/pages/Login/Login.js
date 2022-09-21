@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,9 +13,13 @@ const Login = () => {
 		password: ''
 	});
 
+    
     const navigate = useNavigate()
+    
+    // useEffect(()=>{
+    //     loggedIn&&navigate("/explore")
 
-    // loggedIn&&navigate("/explore")
+    // },[])
 
     const handleForm = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });  

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {Link} from "react-router-dom"
+import axios from 'axios'
 
 import MainContext from '../../context/MainContext'
 
@@ -8,12 +9,24 @@ import "./Header.css"
 const Header = () => {
   const {userInfo } =useContext(MainContext)
 
-  console.log(userInfo)
+  const handleSearch = (e) => {
+    console.log(e.target.value)
+    axios.get("/api/users/search/"+e.target.value)
+
+  }
+
   return (
     <header className='header'>
       <Link to="/explore" className='nav-link'>
         <h1 className='header-logo'>Bitogram</h1>
       </Link>
+          <form>
+            <input
+            className='search-bar' 
+            type="text" 
+            onChange={(e)=>handleSearch(e)} 
+            />
+          </form>
       <nav className='nav'>
         <ul className='navbar'>
           <li className='nav-item'>
@@ -34,7 +47,6 @@ const Header = () => {
               alt="user-logo"
               >
               </img>
-              <p>{userInfo.firstName?userInfo.firstName+" profile":"Account profile"}</p>
             </Link>
           </li>
           <li className='nav-item'>
@@ -48,7 +60,6 @@ const Header = () => {
               alt='exit-logo'
               >
               </img>
-              Log out
             </Link>
           </li>
         </ul>

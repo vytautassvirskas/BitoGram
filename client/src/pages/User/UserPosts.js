@@ -5,6 +5,8 @@ import axios from "axios"
 import MainContext from '../../context/MainContext'
 import "../Explore/Explore.css"
 
+import UserDashBoard from '../../components/UserDashBoard/UserDashBoard'
+
 const User = () => {
     const {userInfo}=useContext(MainContext)
     const [posts, setPosts] = useState([])
@@ -25,6 +27,12 @@ const User = () => {
       },[userInfo.id,navigate])
   return (
         <div className='posts-container'>
+            <UserDashBoard 
+            userId={userInfo.id}
+            userName={userInfo.userName} 
+            firstName={userInfo.firstName} 
+            lastName={userInfo.lastName}
+            />
         {posts && posts.map(post=>
         <div key={post.id} className='card'>
             <div className='card-top'>

@@ -1,0 +1,85 @@
+.user-dash{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-dash-image-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+.user-dash-image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.user-dash-info{
+    width:67%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+.user-name-settings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-name-settings h2 {
+    margin: 0 20px 0 0;
+    font-size: 28px;
+    font-weight: 100;
+}
+.user-name-settings a{
+    padding: 5px 10px;
+    border-radius: 3px ;
+    border: 1px solid rgb(159, 159, 159);
+    background-color: transparent;
+    color: rgb(21, 22, 21);
+    margin: 0 20px 0 0;
+    text-decoration: none;
+}
+.user-name-settings a:hover{
+    cursor: pointer;
+}
+.user-name-settings img {
+    height: 18px;
+    width: 18px;
+}
+
+.posts-follow-stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.posts-follow-stats p {
+    font-weight: 400;
+    margin: 0 20px 0 0;
+    font-size: 16px;
+}
+.posts-follow-stats span {
+    font-weight: bold;
+    margin: 0 5px 0 0;
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-info h3{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+.user-info p{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}

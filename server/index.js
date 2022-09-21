@@ -34,7 +34,7 @@ app.use(session({
     //norint talptinti kazkur apsaugtam domene, 
     //tada reikia nustatyti secure i true
     secure: false,
-    maxAge: 600000
+    maxAge: 6000000 //100minuciu
  }, 
 
 }))

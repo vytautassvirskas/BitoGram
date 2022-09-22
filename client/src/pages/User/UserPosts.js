@@ -35,6 +35,7 @@ const User = () => {
             lastName={userInfo.lastName}
             userImage={userInfo.image}
             postsAmount={posts.length}
+            description={userInfo.description}
             />
         {posts && posts.map(post=>
         <div key={post.id} className='card'>

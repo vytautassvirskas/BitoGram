@@ -90,7 +90,7 @@ const Register = () => {
                         type="text"
                         name="email"
                         onChange={handleForm}
-                        placeholder="El. paštas"
+                        placeholder="Email"
                         />
                     </div>
                     <div className='input-wrapper'>
@@ -100,7 +100,7 @@ const Register = () => {
                         type="password"
                         name="password"
                         onChange={handleForm}
-                        placeholder="Slaptažodis"
+                        placeholder="Password"
                         />                   
                     </div>
                     <button className='main-btn'>Sign up</button>

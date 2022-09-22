@@ -26,8 +26,9 @@ function App() {
   })
   const [loggedIn, setLoggedIn]=useState(false)
   const [userInfo, setUserInfo] = useState({})
+  const [editUser,setEditUser] = useState(false)
   
-  const contextValues = {alert, setAlert, loggedIn, setLoggedIn,userInfo, setUserInfo}
+  const contextValues = {alert, setAlert, loggedIn, setLoggedIn,userInfo, setUserInfo,editUser,setEditUser}
 
   useEffect(()=>{
     axios.get("/api/users/check-auth/")
@@ -36,7 +37,7 @@ function App() {
       setUserInfo(resp.data)
       console.log(resp.data);
     })
-  },[])
+  },[editUser])
 
   return (
    <BrowserRouter>

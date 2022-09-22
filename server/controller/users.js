@@ -82,7 +82,7 @@ router.get("/check-auth",auth, async(req,res)=>{
         res.status().send("Įvyko serverio klaida")
     }
 })
-
+// PATOBULINTI
 // paieska tam tikro vartotojo nuotrauku
 router.get("/search/:keyword",auth, async (req,res)=>{
     console.log(req.params)
@@ -110,10 +110,13 @@ router.get("/search/:keyword",auth, async (req,res)=>{
 })
 
 router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, async (req,res)=>{
+    console.log("veikia");
     try {
         const user = await db.Users.findByPk(req.params.id)
         if(req.file)
             req.body.image = "/uploads/"+req.file.filename
+        console.log("req body zemiua:");
+        console.log(req.body)
         user.update(req.body)
         res.send("Profilis sėkmingai atnaujintas");
     } catch (error) {
@@ -121,20 +124,23 @@ router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, asyn
     }
     
 })
+// PATOBULINTI
+// vienas posto periurejimui bendram lange
+router.get("/:id",auth, async (req,res)=>{
+    console.log("veikia??");
+    console.log(req.params);
+    try {
+        const user = await db.Users.findByPk(req.params.id)
+        res.json(user)
+        console.log(user);
+    } catch (error) {
+        res.status(500).send("Įvyko serverio klaida")
+    }
+   
+})
 
-// router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, async(req,res)=>{
-//     try {
-//         if(req.file)
-//             req.body.image = "/uploads/"+req.file.filename
 
-//         req.body.userId=req.session.user.id
-//         new db.Posts(req.body).save()
-//         res.send("Įrašas sėkmingai sukurtas")
-//     } catch {
-//         res.status(500).send("Įvyko serverio klaida")
-//     }
-    
-// })
+
 
 
 export default router

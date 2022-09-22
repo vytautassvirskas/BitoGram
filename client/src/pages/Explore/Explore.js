@@ -77,14 +77,13 @@ const Explore = () => {
 
         <div className='card-actions'>
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
-            {post.likes.length>0?
-            (post.likes.find(like=>like.userName===userInfo.userName)?(
+            {
+            post.likes.find(like=>like.userName===userInfo.userName)?(
               <FullHeart/> 
             ):(
               <EmptyHeart/>
-            )):( 
-              <EmptyHeart/>
-            )}
+            )
+            }
            
           </div>
           <img

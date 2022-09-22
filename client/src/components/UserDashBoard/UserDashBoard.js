@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import "./UserDashBoard.css"
 
 const UserDashBoard = (props) => {
-    const {userId, userName, firstName, lastName,userImage}=props
+    const {userId, userName, firstName, lastName,userImage,postsAmount}=props
   return (
     <div className='user-dash'>
         <div className='user-dash-image-wrapper' >
@@ -29,7 +29,7 @@ const UserDashBoard = (props) => {
                <img src="https://www.svgrepo.com/show/196008/settings-gear.svg" alt="settings." />
             </div>
             <div className='posts-follow-stats'>
-                <p><span>0</span>posts</p>
+                <p><span>{postsAmount}</span>posts</p>
                 <p><span>0</span>followers</p>
                 <p><span>0</span>following</p>
             </div>

@@ -50,12 +50,16 @@ const Explore = () => {
     {posts && posts.map(post=>
       <div key={post.id} className='card'>
         <div className='card-top'>
-          <div className='user-info'>
+          <div className='user-info-explorer'>
             <Link to={"/user/"+post.userId} className="card-link">
-              <img 
+            <img 
+              className='card-img' 
+              src={post.user.image}
+              alt="user" />
+              {/* <img 
               className='card-img' 
               src="https://www.svgrepo.com/show/361411/account.svg" 
-              alt="user" />
+              alt="user" /> */}
             </Link>
             <Link to={"/user/"+post.userId} className="card-link">
               <span className='card-username'>{post.user.userName}</span>

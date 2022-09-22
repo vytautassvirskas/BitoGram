@@ -11,11 +11,11 @@ const User = () => {
     const {userInfo}=useContext(MainContext)
     const [posts, setPosts] = useState([])
     const navigate=useNavigate()
-    console.log(userInfo);
+    // console.log(userInfo);
     useEffect(()=>{
         axios.get("/api/posts/user/"+userInfo.id)
         .then(resp=>{
-          console.log(resp.data);
+        //   console.log(resp.data);
           setPosts(resp.data)
         })
         .catch(error=>{
@@ -33,7 +33,6 @@ const User = () => {
             userName={userInfo.userName} 
             firstName={userInfo.firstName} 
             lastName={userInfo.lastName}
-            userImage={userInfo.image}
             postsAmount={posts.length}
             description={userInfo.description}
             />

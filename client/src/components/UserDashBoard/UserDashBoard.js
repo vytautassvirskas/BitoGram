@@ -1,16 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from "react-router-dom"
 
+import MainContext from '../../context/MainContext'
 import "./UserDashBoard.css"
 
 const UserDashBoard = (props) => {
-    const {userId, userName, firstName, lastName,userImage,postsAmount,description}=props
+    const{userInfo}=useContext(MainContext)
+    const {userId, userName, firstName, lastName,postsAmount,description}=props
   return (
     <div className='user-dash'>
         <div className='user-dash-image-wrapper' >
-            {userImage ? (
+            {userInfo.image ? (
                  <img
-                 src={userImage}
+                 src={userInfo.image}
                  alt="user" />
             )
             :

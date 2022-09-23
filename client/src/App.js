@@ -26,9 +26,9 @@ function App() {
   })
   const [loggedIn, setLoggedIn]=useState(false)
   const [userInfo, setUserInfo] = useState({})
-  const [editUser,setEditUser] = useState(false)
+  const [refresh,setRefresh] = useState(false)
   
-  const contextValues = {alert, setAlert, loggedIn, setLoggedIn,userInfo, setUserInfo,editUser,setEditUser}
+  const contextValues = {alert, setAlert, loggedIn, setLoggedIn,userInfo, setUserInfo,refresh,setRefresh}
 
   useEffect(()=>{
     axios.get("/api/users/check-auth/")
@@ -37,7 +37,8 @@ function App() {
       setUserInfo(resp.data)
       console.log(resp.data);
     })
-  },[editUser])
+  },[refresh])
+  // console.log(refresh);
 
   return (
    <BrowserRouter>
@@ -50,10 +51,12 @@ function App() {
         <Route path="/register" element={<Register/>}></Route>
         <Route path='/logout' element={<Logout/>}></Route>
         <Route path='/explore' element={<Explore/>}></Route>
-        <Route path='/user/posts' element={<UserPosts/>}></Route>
         <Route path="/post/:id" element={<SinglePost/>}></Route>
+        <Route path='/user/posts' element={<UserPosts/>}></Route>
         <Route path='/user/new' element={<NewPost/>}></Route>
         <Route path='/user/edit/:id' element={<EditUser/>}></Route>
+        <Route path='/user/:id' element={<UserPosts/>}></Route>
+
         <Route path='*' element={<NotFound/>}></Route>
 
       </Routes>

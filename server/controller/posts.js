@@ -27,11 +27,14 @@ router.get("/user/:id",auth, async (req,res)=>{
         const posts = await db.Posts.findAll({
             where:{userId: req.params.id},
             include: [{
-                model: db.Users,
+                model: db.Users
             },
             {
-                model: db.Likes,
+                model: db.Likes
             },
+            {
+                model: db.Comments
+            }
             // {
             //     model: db.Comments,
             //     where: {

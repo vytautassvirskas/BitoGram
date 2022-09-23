@@ -5,8 +5,9 @@ import axios from "axios"
 import MainContext from "../../context/MainContext.js";
 import "./Explore.css"
 
-import EmptyHeart from '../../components/Hearts/EmptyHeart.js';
-import FullHeart from '../../components/Hearts/FullHeart.js';
+import EmptyHeart from '../../components/Icons/EmptyHeart.js';
+import FullHeartRed from '../../components/Icons/FullHeartRed.js';
+import Comments from '../../components/Icons/Comments.js';
 
 
 const Explore = () => {
@@ -83,17 +84,13 @@ const Explore = () => {
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
             {
             post.likes.find(like=>like.userName===userInfo.userName)?(
-              <FullHeart/> 
+              <FullHeartRed/> 
             ):(
               <EmptyHeart/>
             )
             }
-           
           </div>
-          <img
-          className='card-img' 
-          src="https://www.svgrepo.com/show/357540/comment.svg" 
-          alt="comment-logo" />
+          <Comments/>
         </div>
         <div className='card-bottom'>
           <p className='card-username'>{post.user.userName}</p>

@@ -1,0 +1,56 @@
+.user-post-card{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.user-post-card:hover{
+    cursor: pointer;
+    
+}
+.user-post-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user-post-card .transparent{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color:transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+.user-post-card:hover .transparent{
+    background-color: rgba(131, 142, 142, 0.702);
+}
+.transparent-icons-wrapper{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    z-index: 3;
+}
+
+.transparent-icons-wrapper div{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+.transparent-icons-wrapper span{
+    font-size: 18px;
+    font-weight: bold; 
+    color: white;
+}
+.transparent-icons-wrapper img,.transparent-icons-wrapper span {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+
+}
+.user-post-card:hover img, .user-post-card:hover span{
+    opacity: 1;
+}

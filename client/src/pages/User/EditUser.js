@@ -8,7 +8,7 @@ import MainContext from '../../context/MainContext'
 
 const EditUser = () => {
   const {id} = useParams()
-  const {setAlert,editUser,setEditUser} =useContext(MainContext)
+  const {setAlert,refresh,setRefresh} =useContext(MainContext)
   const [form, setForm]=useState({
     firstName:"",
     lastName:"",
@@ -16,7 +16,6 @@ const EditUser = () => {
     description:"",
     image:""
   })
-  const [user,setUser]=useState({})
   const navigate = useNavigate();
   
   useEffect(()=>{
@@ -33,9 +32,7 @@ const EditUser = () => {
         }
     })
   },[])
-  console.log("user zemiua")
-  console.log(user);
-
+ 
   const handleForm = (e) => {
     setForm({...form, [e.target.name]: e.target.name==="image" ? e.target.files[0]: e.target.value })   
 	};
@@ -50,7 +47,7 @@ const EditUser = () => {
     console.log(formData);
     axios.put("/api/users/edit/"+id, formData)
     .then(resp=>{
-      setEditUser(!editUser)
+      setRefresh(!refresh)
       console.log(resp.data);
       setAlert({
         message: resp.data,

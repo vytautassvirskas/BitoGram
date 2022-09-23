@@ -1,0 +1,11 @@
+.user-page-info{
+    width: 700px;
+    margin: 0 auto 50px;
+}
+.user-posts-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 700px;
+    margin: 0 auto;
+}

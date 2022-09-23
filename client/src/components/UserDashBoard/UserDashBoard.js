@@ -6,7 +6,7 @@ import "./UserDashBoard.css"
 
 const UserDashBoard = (props) => {
     const{userInfo}=useContext(MainContext)
-    const {userId, userName, firstName, lastName,postsAmount,description}=props
+    const {postsAmount}=props
   return (
     <div className='user-dash'>
         <div className='user-dash-image-wrapper' >
@@ -26,8 +26,8 @@ const UserDashBoard = (props) => {
         </div>
         <div className='user-dash-info'>
             <div className='user-name-settings'>
-               <h2>{userName}</h2> 
-               <Link to={"/user/edit/"+userId}>Edit profile</Link>
+               <h2>{userInfo.userName}</h2> 
+               <Link to={"/user/edit/"+userInfo.id}>Edit profile</Link>
                <img src="https://www.svgrepo.com/show/196008/settings-gear.svg" alt="settings." />
             </div>
             <div className='posts-follow-stats'>
@@ -37,12 +37,12 @@ const UserDashBoard = (props) => {
             </div>
             <div className='user-info'>
                 <div>
-                    <h3>{firstName+" "+lastName}</h3>
+                    <h3>{userInfo.firstName+" "+userInfo.lastName}</h3>
                     <p>{
-                    description?
-                    description
+                    userInfo.description?
+                    userInfo.description
                     :
-                    <Link to={"/user/edit/"+userId}>Add some description...</Link>
+                    <Link to={"/user/edit/"+userInfo.id}>Add some description...</Link>
                     }</p>
                 </div>
             </div>

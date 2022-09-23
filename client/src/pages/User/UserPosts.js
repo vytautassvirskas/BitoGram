@@ -32,12 +32,7 @@ const User = () => {
     <>
         <div className='user-page-info'>
             <UserDashBoard 
-            userId={userInfo.id}
-            userName={userInfo.userName} 
-            firstName={userInfo.firstName} 
-            lastName={userInfo.lastName}
             postsAmount={posts.length}
-            description={userInfo.description}
             />
         </div>
         <div className='user-posts-grid'>

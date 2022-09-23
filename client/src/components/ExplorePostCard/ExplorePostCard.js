@@ -8,27 +8,14 @@ import EmptyHeart from '../../components/Icons/EmptyHeart.js';
 import FullHeartRed from '../../components/Icons/FullHeartRed.js';
 import Comments from '../../components/Icons/Comments.js';
 import CardTop from '../CardTop/CardTop.js';
+import CardActionsRow from '../CardActionsRow/CardActionsRow.js';
 
 import "./ExplorePostCard.css"
 
 const ExplorePostCard = (props) => {
     const {userInfo} =useContext(MainContext)
-    const {posts, liked, setLiked}=props
-    const [likes, setLikes] = useState([])
+    const {posts, liked, setLiked}=props 
 
-
-    const handleClick = (id) =>{
-        axios.post("/api/likes/new/", {like: "1", postId: id})
-        .then(resp=>{
-          setLiked(!liked)
-          setLikes(resp.data)
-    
-          console.log(resp.data);
-      })
-      .catch(error=>{
-          console.log(error);
-      })
-      }
   return (
    <>
    {posts && posts.map(post=>
@@ -59,8 +46,11 @@ const ExplorePostCard = (props) => {
             alt="post" />
           </Link>
         </div>
-
-        <div className='card-actions'>
+        <CardActionsRow
+        liked={liked}
+        setLiked={setLiked}
+        post={post}/>
+        {/* <div className='card-actions'>
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
             {
             post.likes.find(like=>like.userName===userInfo.userName)?(
@@ -71,7 +61,7 @@ const ExplorePostCard = (props) => {
             }
           </div>
           <Comments/>
-        </div>
+        </div> */}
         <div className='card-bottom'>
           <p className='card-username'>{post.user.userName}</p>
           <p className='card-caption'>{post.caption}</p>

@@ -14,11 +14,11 @@ const CardTop = (props) => {
             <img 
               className='card-img' 
               // be klaustuku neveikia ant single post
-              src={post.user.image}
+              src={post.user?.image}
               alt="user" />
             </Link>
             <Link to={"/user/"+post.userId}>
-              <span className='card-username'>{post.user.userName}</span>
+              <span className='card-username'>{post.user?.userName}</span>
             </Link>
           </div>
             <Link to={"/user/"+post.userId}>

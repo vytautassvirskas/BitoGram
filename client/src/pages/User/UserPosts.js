@@ -1,18 +1,25 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios"
 
-import "../Explore/Explore.css"
 import "./UserPosts.css"
 
+import MainContext from '../../context/MainContext'
+
 import UserDashBoard from '../../components/UserDashBoard/UserDashBoard'
+import UserDashBoardOther from '../../components/UserDashBoard/UserDashBoardOther'
 import UserPostCard from '../../components/UserPostCard/UserPostCard'
 
 const User = () => {
+    const{userInfo}=useContext(MainContext)
     const{id}=useParams()
     const [posts, setPosts] = useState([])
     const [user, setUser] = useState({})
     const navigate=useNavigate()
+    window.scrollTo(0, 0)
+
+    console.log("userInfo.id: "+userInfo.id);
+    console.log("atidaryto userio.id: "+id);
     useEffect(()=>{
         axios.get("/api/posts/user/"+id)
         .then(resp=>{
@@ -45,11 +52,20 @@ const User = () => {
   return (
     <>
         <div className='user-page-info'>
-            <UserDashBoard 
+          {+userInfo.id===+id ?
+            <UserDashBoard
+            postsAmount={posts.length}
+            id={id}
+            user={user}
+            /> 
+           : 
+            <UserDashBoardOther 
             postsAmount={posts.length}
             id={id}
             user={user}
             />
+          }
+            
         </div>
         <div className='user-posts-container'>
           <div className='user-posts-grid'>

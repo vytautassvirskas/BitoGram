@@ -67,6 +67,7 @@ router.get("/:id",auth, async (req,res)=>{
         const post = await db.Posts.findByPk(req.params.id, {
             include: [db.Users, db.Comments, db.Likes] 
         })
+        console.log(post);
         res.json(post)
     } catch (error) {
         res.status(500).send("Įvyko serverio klaida")

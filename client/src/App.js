@@ -47,7 +47,6 @@ function App() {
       console.log(resp.data);
     })
   },[refresh])
-  // console.log(refresh);
 
   return (
    <BrowserRouter>

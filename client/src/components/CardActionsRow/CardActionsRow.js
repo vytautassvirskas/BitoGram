@@ -27,13 +27,13 @@ const CardActionsRow = (props) => {
   return (
     <div className='card-actions'>
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
-            {/* {
+            {post?.likes &&
             post.likes.find(like=>like.userName===userInfo.userName)?(
               <FullHeartRed/> 
             ):(
               <EmptyHeart/>
             )
-            } */}
+            }
           </div>
           <Comments/>
     </div>

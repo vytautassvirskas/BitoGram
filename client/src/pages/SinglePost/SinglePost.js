@@ -1,13 +1,14 @@
-import React,{ useState, useEffect} from 'react'
+import React,{ useState, useEffect,useContext} from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios"
 
 import "./SinglePost.css"
-
+import MainContext from '../../context/MainContext'
 import CardTop from '../../components/CardTop/CardTop.js';
 import CardActionsRow from '../../components/CardActionsRow/CardActionsRow';
 
 const SinglePost = () => {
+    const{liked}=useContext(MainContext)
     const {id}=useParams()
     const [post, setPost] = useState({})
     const [comment, setComment] =useState("")
@@ -16,8 +17,10 @@ const SinglePost = () => {
     const navigate=useNavigate()
 
     useEffect(()=>{
+        console.log("useefect suveikia");
         axios.get("/api/posts/"+id)
         .then(resp=>{
+            console.log("resp.data: ");
             console.log(resp.data);
             setPost(resp.data)
         })
@@ -28,7 +31,7 @@ const SinglePost = () => {
 				setTimeout(() => navigate("/"),2000)
 			}
         })
-    },[refresh,id, navigate])
+    },[refresh,id, navigate,liked])
 
     
     const handleSubmit = (e) =>{
@@ -56,23 +59,6 @@ const SinglePost = () => {
         </div>
         <div className='single-post-right'>
         <CardTop post={post} />
-            {/* <div className='card-top'>
-                <div className='user-info'>
-                    <Link to={"/user/"+post.userId} className="card-link">
-                    <img 
-                    className='card-img' 
-                    src="https://www.svgrepo.com/show/361411/account.svg" 
-                    alt="user" />
-                    </Link>
-                    <Link to={"/user/"+post.userId} className="card-link">
-                    <span className='card-username'>{post.user?.userName}</span>
-                    </Link>
-                </div>
-                <img 
-                className='card-img' 
-                src="https://www.svgrepo.com/show/68522/more-with-three-dots-button.svg" 
-                alt="more" />
-            </div> */}
             <div className='comment-section'>
                 {post.comments && post.comments.map(comment=>
                     <div className='comment-wrapepr' key={comment.id}>
@@ -88,16 +74,6 @@ const SinglePost = () => {
             </div>
             <CardActionsRow
             post={post}/>
-            {/* <div className='card-actions'>
-                <img
-                className='card-img' 
-                src="https://www.svgrepo.com/show/13666/heart.svg" 
-                alt="like-logo" />
-                <img
-                className='card-img' 
-                src="https://www.svgrepo.com/show/357540/comment.svg" 
-                alt="comment-logo" />
-            </div> */}
             <form className='comment-form' onSubmit={(e)=>handleSubmit(e)}>
                 <div className='emoji-img-wrapper'>
                     <img className='emoji-img'

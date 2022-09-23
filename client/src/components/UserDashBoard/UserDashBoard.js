@@ -1,18 +1,17 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
 
-import MainContext from '../../context/MainContext'
+
 import "./UserDashBoard.css"
 
 const UserDashBoard = (props) => {
-    const{userInfo}=useContext(MainContext)
-    const {postsAmount}=props
+    const {postsAmount, id, user}=props
   return (
     <div className='user-dash'>
         <div className='user-dash-image-wrapper' >
-            {userInfo.image ? (
+            {user.image ? (
                  <img
-                 src={userInfo.image}
+                 src={user.image}
                  alt="user" />
             )
             :
@@ -26,8 +25,8 @@ const UserDashBoard = (props) => {
         </div>
         <div className='user-dash-info'>
             <div className='user-name-settings'>
-               <h2>{userInfo.userName}</h2> 
-               <Link to={"/user/edit/"+userInfo.id}>Edit profile</Link>
+               <h2>{user.userName}</h2> 
+               <Link to={"/user/edit/"+id}>Edit profile</Link>
                <img src="https://www.svgrepo.com/show/196008/settings-gear.svg" alt="settings." />
             </div>
             <div className='posts-follow-stats'>
@@ -37,12 +36,12 @@ const UserDashBoard = (props) => {
             </div>
             <div className='user-info'>
                 <div>
-                    <h3>{userInfo.firstName+" "+userInfo.lastName}</h3>
+                    <h3>{user.firstName+" "+user.lastName}</h3>
                     <p>{
-                    userInfo.description?
-                    userInfo.description
+                    user.description?
+                    user.description
                     :
-                    <Link to={"/user/edit/"+userInfo.id}>Add some description...</Link>
+                    <Link to={"/user/edit/"+user.id}>Add some description...</Link>
                     }</p>
                 </div>
             </div>

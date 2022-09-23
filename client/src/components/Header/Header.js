@@ -1,11 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from "react-router-dom"
 import axios from 'axios'
 
-
+import MainContext from '../../context/MainContext'
 import "./Header.css"
 
 const Header = () => {
+  const {userInfo} = useContext(MainContext)
 
   const handleSearch = (e) => {
     console.log(e.target.value)
@@ -38,7 +39,7 @@ const Header = () => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to="/user/posts" className='nav-link'>
+            <Link to={"/user/"+userInfo.id} className='nav-link'>
               <img 
               className='nav-img' 
               src='https://www.svgrepo.com/show/20/user.svg' 

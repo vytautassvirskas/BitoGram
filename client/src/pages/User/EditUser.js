@@ -52,7 +52,7 @@ const EditUser = () => {
         message: resp.data,
         status: "success"
       })
-      navigate("/user/posts")
+      navigate("/user/"+id)
 
     })
     .catch(error=>{

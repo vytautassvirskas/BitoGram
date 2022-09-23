@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 
+import MainContext from '../../context/MainContext';
+
 const NewPost = () => {
+    const {userInfo} = useContext(MainContext)
     const [form, setForm] =useState({
         caption:"",
         photo:""
@@ -24,7 +27,7 @@ const NewPost = () => {
         axios.post("/api/posts/new/", formData)
         .then(resp=>{
             console.log(resp.data);
-            navigate("/user/posts/")
+            navigate("/user/"+userInfo.id)
         })
         .catch(error=>{
             console.log(error);

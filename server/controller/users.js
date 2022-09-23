@@ -110,7 +110,6 @@ router.get("/search/:keyword",auth, async (req,res)=>{
 })
 
 router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, async (req,res)=>{
-    console.log("veikia");
     try {
         const user = await db.Users.findByPk(req.params.id)
         if(req.file)
@@ -125,7 +124,7 @@ router.put("/edit/:id", auth, upload.single("image"), userEditingValidator, asyn
     
 })
 // PATOBULINTI
-// vienas posto periurejimui bendram lange
+// vienas userio periurejimui 
 router.get("/:id",auth, async (req,res)=>{
     console.log("veikia??");
     console.log(req.params);

@@ -1,0 +1,23 @@
+.card-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0 auto;
+ }
+ .card-top .user-info-wrapper{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+ }
+ .card-top a{
+     text-decoration: none;
+     color: black;
+     cursor: pointer;
+ }
+ .card-username{
+     font-weight: bold;
+     font-size: 14px;
+ }

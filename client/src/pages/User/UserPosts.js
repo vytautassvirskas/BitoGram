@@ -35,17 +35,19 @@ const User = () => {
             postsAmount={posts.length}
             />
         </div>
-        <div className='user-posts-grid'>
-        {posts && posts.map(post=>
-        <Link to={"/post/"+post.id}>
-            <UserPostCard
-            key={post.id}
-            postImage={post.image}
-            likesTotal={post.likes.length}
-            commentsTotal={post.comments.length}
-            />
-        </Link>
-        )}
+        <div className='user-posts-container'>
+          <div className='user-posts-grid'>
+          {posts && posts.map(post=>
+          <Link to={"/post/"+post.id}>
+              <UserPostCard
+              key={post.id}
+              postImage={post.image}
+              likesTotal={post.likes.length}
+              commentsTotal={post.comments.length}
+              />
+          </Link>
+          )}
+          </div>
         </div>
     </>
   )

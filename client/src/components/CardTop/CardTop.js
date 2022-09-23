@@ -13,6 +13,7 @@ const CardTop = (props) => {
             <Link to={"/user/"+post.userId}>
             <img 
               className='card-img' 
+              // be klaustuku neveikia ant single post
               src={post.user.image}
               alt="user" />
             </Link>

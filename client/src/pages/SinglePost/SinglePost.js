@@ -4,6 +4,8 @@ import axios from "axios"
 
 import "./SinglePost.css"
 
+import CardTop from '../../components/CardTop/CardTop.js';
+
 const SinglePost = () => {
     const {id}=useParams()
     const [post, setPost] = useState({})
@@ -52,7 +54,8 @@ const SinglePost = () => {
             alt="post" />
         </div>
         <div className='single-post-right'>
-            <div className='card-top'>
+        <CardTop post={post} />
+            {/* <div className='card-top'>
                 <div className='user-info'>
                     <Link to={"/user/"+post.userId} className="card-link">
                     <img 
@@ -68,7 +71,7 @@ const SinglePost = () => {
                 className='card-img' 
                 src="https://www.svgrepo.com/show/68522/more-with-three-dots-button.svg" 
                 alt="more" />
-            </div>
+            </div> */}
             <div className='comment-section'>
                 {post.comments && post.comments.map(comment=>
                     <div className='comment-wrapepr' key={comment.id}>

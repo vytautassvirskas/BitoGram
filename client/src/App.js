@@ -28,13 +28,15 @@ function App() {
   const [userInfo, setUserInfo] = useState({})
   const [refresh,setRefresh] = useState(false)
   const [liked, setLiked] = useState(false)
+  const [singlePost, setSinglePost] = useState({})
   
   const contextValues = {
     alert, setAlert, 
     loggedIn, setLoggedIn,
     userInfo, setUserInfo,
     refresh,setRefresh,
-    liked, setLiked
+    liked, setLiked,
+    singlePost, setSinglePost
   }
 
   useEffect(()=>{

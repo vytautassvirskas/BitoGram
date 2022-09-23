@@ -1,16 +1,13 @@
-import React,{ useState, useEffect, useContext} from 'react'
+import React,{ useState, useEffect} from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios"
 
 import "./SinglePost.css"
-import MainContext from "../../context/MainContext.js";
 
 import CardTop from '../../components/CardTop/CardTop.js';
 import CardActionsRow from '../../components/CardActionsRow/CardActionsRow';
 
 const SinglePost = () => {
-  const {liked, setLiked} =useContext(MainContext)
-
     const {id}=useParams()
     const [post, setPost] = useState({})
     const [comment, setComment] =useState("")
@@ -90,8 +87,6 @@ const SinglePost = () => {
                 
             </div>
             <CardActionsRow
-            liked={liked}
-            setLiked={setLiked}
             post={post}/>
             {/* <div className='card-actions'>
                 <img

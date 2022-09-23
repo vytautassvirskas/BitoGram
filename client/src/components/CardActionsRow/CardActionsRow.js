@@ -14,11 +14,10 @@ import Comments from '../../components/Icons/Comments.js';
 
 const CardActionsRow = (props) => {
   const {userInfo, liked, setLiked} =useContext(MainContext)
-
-  // gal liked ir setLiked persimesti i maincontext
   const {post}=props
+  console.log(post);
 
-   const handleClick = (id) =>{
+  const handleClick = (id) =>{
     axios.post("/api/likes/new/", {like: "1", postId: id})
     .then(resp=>setLiked(!liked))
   .catch(error=>{
@@ -28,13 +27,13 @@ const CardActionsRow = (props) => {
   return (
     <div className='card-actions'>
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
-            {
+            {/* {
             post.likes.find(like=>like.userName===userInfo.userName)?(
               <FullHeartRed/> 
             ):(
               <EmptyHeart/>
             )
-            }
+            } */}
           </div>
           <Comments/>
     </div>

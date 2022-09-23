@@ -13,13 +13,16 @@ const SinglePost = () => {
     const [post, setPost] = useState({})
     const [comment, setComment] =useState("")
     const [refresh, setRefresh] = useState(false)
+    const [isLoading,setIsLoading]=useState(true)
 
     const navigate=useNavigate()
 
     useEffect(()=>{
+        
         console.log("useefect suveikia");
         axios.get("/api/posts/"+id)
         .then(resp=>{
+            setIsLoading(false)
             console.log("resp.data: ");
             console.log(resp.data);
             setPost(resp.data)
@@ -50,49 +53,58 @@ const SinglePost = () => {
 
 
   return (
-    <div className='single-post'>
-        <div className='single-post-left'>
-            <img 
-            className='single-post-img' 
-            src={post.image} 
-            alt="post" />
-        </div>
-        <div className='single-post-right'>
-        <CardTop post={post} />
-            <div className='comment-section'>
-                {post.comments && post.comments.map(comment=>
-                    <div className='comment-wrapepr' key={comment.id}>
-                        <div className='comment-photo-wrapper'>
-                            <img src="https://www.svgrepo.com/show/361411/account.svg" alt="user" />
-                        </div>
-                        <p className='comment-author'>{comment.userName}</p>
-                        <p>{comment.comment}</p>
-                        
-                    </div>
-                )}
-                
+    <>
+    {isLoading ? (
+        <p>Loading...</p>
+    )
+    :
+    (
+        <div className='single-post'>
+            <div className='single-post-left'>
+                <img 
+                className='single-post-img' 
+                src={post.image} 
+                alt="post" />
             </div>
-            <CardActionsRow
-            post={post}/>
-            <form className='comment-form' onSubmit={(e)=>handleSubmit(e)}>
-                <div className='emoji-img-wrapper'>
-                    <img className='emoji-img'
-                    src="https://www.svgrepo.com/show/166327/smile.svg" 
-                    alt="emoji" />
+            <div className='single-post-right'>
+            <CardTop post={post} />
+                <div className='comment-section'>
+                    {post.comments && post.comments.map(comment=>
+                        <div className='comment-wrapepr' key={comment.id}>
+                            <div className='comment-photo-wrapper'>
+                                <img src="https://www.svgrepo.com/show/361411/account.svg" alt="user" />
+                            </div>
+                            <p className='comment-author'>{comment.userName}</p>
+                            <p>{comment.comment}</p>
+                            
+                        </div>
+                    )}
+                    
                 </div>
-                <textarea className='comment-text-area'
-                value={comment}
-                name="comment"  
-                rows="1"
-                placeholder='Add a comment...'
-                onChange={(e)=>setComment(e.target.value)}></textarea>
-                <div className='comment-post-btn-wrapper'>
-                    <button className='comment-post-btn'>Post</button>
-                </div>
-            </form>
+                <CardActionsRow
+                post={post}/>
+                <form className='comment-form' onSubmit={(e)=>handleSubmit(e)}>
+                    <div className='emoji-img-wrapper'>
+                        <img className='emoji-img'
+                        src="https://www.svgrepo.com/show/166327/smile.svg" 
+                        alt="emoji" />
+                    </div>
+                    <textarea className='comment-text-area'
+                    value={comment}
+                    name="comment"  
+                    rows="1"
+                    placeholder='Add a comment...'
+                    onChange={(e)=>setComment(e.target.value)}></textarea>
+                    <div className='comment-post-btn-wrapper'>
+                        <button className='comment-post-btn'>Post</button>
+                    </div>
+                </form>
+            </div>
         </div>
+       
 
-    </div>
+    )}
+    </>
   )
 }
 

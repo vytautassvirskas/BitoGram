@@ -1,13 +1,11 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
 import axios from 'axios'
 
-import MainContext from '../../context/MainContext'
 
 import "./Header.css"
 
 const Header = () => {
-  const {userInfo } =useContext(MainContext)
 
   const handleSearch = (e) => {
     console.log(e.target.value)

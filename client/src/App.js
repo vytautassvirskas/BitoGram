@@ -27,8 +27,15 @@ function App() {
   const [loggedIn, setLoggedIn]=useState(false)
   const [userInfo, setUserInfo] = useState({})
   const [refresh,setRefresh] = useState(false)
+  const [liked, setLiked] = useState(false)
   
-  const contextValues = {alert, setAlert, loggedIn, setLoggedIn,userInfo, setUserInfo,refresh,setRefresh}
+  const contextValues = {
+    alert, setAlert, 
+    loggedIn, setLoggedIn,
+    userInfo, setUserInfo,
+    refresh,setRefresh,
+    liked, setLiked
+  }
 
   useEffect(()=>{
     axios.get("/api/users/check-auth/")

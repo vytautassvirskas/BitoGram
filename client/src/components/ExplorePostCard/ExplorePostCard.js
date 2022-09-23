@@ -1,20 +1,21 @@
-import React, {useState, useContext} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
-import axios from "axios"
 
-import MainContext from "../../context/MainContext.js";
 
-import EmptyHeart from '../../components/Icons/EmptyHeart.js';
-import FullHeartRed from '../../components/Icons/FullHeartRed.js';
-import Comments from '../../components/Icons/Comments.js';
+
+
+// import EmptyHeart from '../../components/Icons/EmptyHeart.js';
+// import FullHeartRed from '../../components/Icons/FullHeartRed.js';
+// import Comments from '../../components/Icons/Comments.js';
 import CardTop from '../CardTop/CardTop.js';
 import CardActionsRow from '../CardActionsRow/CardActionsRow.js';
 
 import "./ExplorePostCard.css"
 
 const ExplorePostCard = (props) => {
-    const {userInfo} =useContext(MainContext)
-    const {posts, liked, setLiked}=props 
+    const {posts}=props 
+
+    
 
   return (
    <>
@@ -47,8 +48,6 @@ const ExplorePostCard = (props) => {
           </Link>
         </div>
         <CardActionsRow
-        liked={liked}
-        setLiked={setLiked}
         post={post}/>
         {/* <div className='card-actions'>
           <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >

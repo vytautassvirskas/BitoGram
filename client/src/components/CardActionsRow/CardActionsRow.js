@@ -1,6 +1,6 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import axios from "axios"
-import {Link} from "react-router-dom"
+
 
 import "./CardActionsRow.css"
 
@@ -13,10 +13,10 @@ import Comments from '../../components/Icons/Comments.js';
 
 
 const CardActionsRow = (props) => {
-  const {userInfo} =useContext(MainContext)
+  const {userInfo, liked, setLiked} =useContext(MainContext)
 
   // gal liked ir setLiked persimesti i maincontext
-  const {post, liked, setLiked}=props
+  const {post}=props
 
    const handleClick = (id) =>{
     axios.post("/api/likes/new/", {like: "1", postId: id})

@@ -1,16 +1,16 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import {useNavigate} from "react-router-dom"
 import axios from "axios"
 
 
 import "./Explore.css"
-
+import MainContext from '../../context/MainContext'
 import ExplorePostCard from '../../components/ExplorePostCard/ExplorePostCard.js';
 
 
 const Explore = () => {
+  const {liked}=useContext(MainContext)
   const [posts, setPosts] = useState([])
-  const [liked, setLiked] = useState(false)
 	const navigate = useNavigate();
 
   useEffect(()=>{
@@ -32,8 +32,6 @@ const Explore = () => {
     <div className='posts-container'>
       <ExplorePostCard 
       posts={posts}
-      liked={liked}
-      setLiked={setLiked}
       />
     </div>
   )

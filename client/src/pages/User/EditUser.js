@@ -1,5 +1,4 @@
 import React, {useState,useContext,useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -31,7 +30,7 @@ const EditUser = () => {
           navigate("/")
         }
     })
-  },[])
+  },[id,navigate])
  
   const handleForm = (e) => {
     setForm({...form, [e.target.name]: e.target.name==="image" ? e.target.files[0]: e.target.value })   

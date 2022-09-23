@@ -1,12 +1,16 @@
-import React,{ useState, useEffect} from 'react'
-import {useParams,Link, useNavigate} from "react-router-dom"
+import React,{ useState, useEffect, useContext} from 'react'
+import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios"
 
 import "./SinglePost.css"
+import MainContext from "../../context/MainContext.js";
 
 import CardTop from '../../components/CardTop/CardTop.js';
+import CardActionsRow from '../../components/CardActionsRow/CardActionsRow';
 
 const SinglePost = () => {
+  const {liked, setLiked} =useContext(MainContext)
+
     const {id}=useParams()
     const [post, setPost] = useState({})
     const [comment, setComment] =useState("")
@@ -85,7 +89,11 @@ const SinglePost = () => {
                 )}
                 
             </div>
-            <div className='card-actions'>
+            <CardActionsRow
+            liked={liked}
+            setLiked={setLiked}
+            post={post}/>
+            {/* <div className='card-actions'>
                 <img
                 className='card-img' 
                 src="https://www.svgrepo.com/show/13666/heart.svg" 
@@ -94,7 +102,7 @@ const SinglePost = () => {
                 className='card-img' 
                 src="https://www.svgrepo.com/show/357540/comment.svg" 
                 alt="comment-logo" />
-            </div>
+            </div> */}
             <form className='comment-form' onSubmit={(e)=>handleSubmit(e)}>
                 <div className='emoji-img-wrapper'>
                     <img className='emoji-img'

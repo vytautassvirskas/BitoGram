@@ -36,8 +36,15 @@ const UserDashBoard = (props) => {
                 <p><span>0</span>following</p>
             </div>
             <div className='user-info'>
-                <h3>{firstName+" "+lastName}</h3>
-                <p>{description?description:"Add some description..."}</p>
+                <div>
+                    <h3>{firstName+" "+lastName}</h3>
+                    <p>{
+                    description?
+                    description
+                    :
+                    <Link to={"/user/edit/"+userId}>Add some description...</Link>
+                    }</p>
+                </div>
             </div>
         </div>
     </div>

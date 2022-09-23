@@ -27,7 +27,7 @@
 }
 .user-name-settings{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -56,7 +56,7 @@
 
 .posts-follow-stats{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -71,12 +71,17 @@
 }
 .user-info{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
+.user-info div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
 .user-info h3{
-    margin: 0;
+    margin: 0 0 10px 0;
     font-size: 16px;
     font-weight: 600;
 }
@@ -84,4 +89,8 @@
     margin: 0;
     font-size: 16px;
     font-weight: 400;
+}
+.user-info a{
+    text-decoration: none;
+    color: black;
 }

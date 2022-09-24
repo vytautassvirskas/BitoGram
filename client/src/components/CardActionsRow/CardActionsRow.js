@@ -8,7 +8,7 @@ import MainContext from "../../context/MainContext.js";
 
 import EmptyHeart from '../../components/Icons/EmptyHeart.js';
 import FullHeartRed from '../../components/Icons/FullHeartRed.js';
-import Comments from '../../components/Icons/Comments.js';
+import CommentsIcon from '../../components/Icons/Comments.js';
 
 
 
@@ -25,7 +25,7 @@ const CardActionsRow = (props) => {
   }
   return (
     <div className='card-actions'>
-          <div className='card-like-img-wrapper' onClick={()=>handleClick(post.id)} >
+          <div onClick={()=>handleClick(post.id)} >
             {post.likes.find(like=>like.userName===userInfo.userName)?(
               <FullHeartRed/> 
             ):(
@@ -33,7 +33,7 @@ const CardActionsRow = (props) => {
             )
             }
           </div>
-          <Comments/>
+          <CommentsIcon/>
     </div>
   )
 }

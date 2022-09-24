@@ -35,6 +35,9 @@ try {
     database.Users.hasMany(database.Posts)
     database.Posts.belongsTo(database.Users)
 
+    database.Users.hasMany(database.Comments)
+    database.Comments.belongsTo(database.Users)
+
     database.Posts.hasMany(database.Comments)
     database.Comments.belongsTo(database.Posts)
 

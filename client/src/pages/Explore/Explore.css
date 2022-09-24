@@ -9,12 +9,7 @@
 
 
 
-.card-img{
-    width: 25px;
-    height: 25px;
-    vertical-align: top;
 
-}
 .img-hover:hover{
     cursor: pointer;
 
@@ -44,18 +39,5 @@
     gap: 10px;
     width: 90%;
 }
-.card-img{
-    object-fit: cover;
-    object-position: top;
-    border-radius: 50%;
-}
-.card-actions{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    width: 90%;
-    padding: 10px 0;
-    margin: 0 auto;
-    
-}
+
+

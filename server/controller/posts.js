@@ -65,7 +65,13 @@ router.post("/new/", auth, upload.single("image"), postValidator, async(req,res)
 router.get("/:id",auth, async (req,res)=>{
     try {
         const post = await db.Posts.findByPk(req.params.id, {
-            include: [db.Users, db.Comments, db.Likes] 
+            include: [
+                {model:db.Users},
+                {model:db.Likes} ,
+                {
+                    model: db.Comments,
+                    include: [db.Users]
+                }] 
         })
         console.log(post);
         res.json(post)

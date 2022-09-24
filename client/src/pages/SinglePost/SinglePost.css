@@ -41,6 +41,14 @@
     gap: 10px;
     align-items: center;
 }
+.comment-photo-wrapper img{
+    width: 25px;
+    height: 25px;
+    vertical-align: top;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
 .comment-author{
     font-weight: bold;
 }

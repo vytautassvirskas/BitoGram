@@ -15,7 +15,6 @@ import Comments from '../../components/Icons/Comments.js';
 const CardActionsRow = (props) => {
   const {userInfo, liked, setLiked} =useContext(MainContext)
   const {post}=props
-  console.log(post);
 
   const handleClick = (id) =>{
     axios.post("/api/likes/new/", {like: "1", postId: id})

@@ -7,9 +7,6 @@ import Dots from '../Icons/Dots'
 
 const CardTop = (props) => {
    const {post}=props
-   console.log("su card top komponentu ateinanti posto info:");
-   console.log(post)
- 
   return (
     <div className='card-top'>
           <div className='user-info-wrapper'>

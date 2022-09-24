@@ -19,7 +19,6 @@ const SinglePost = () => {
 
     useEffect(()=>{
         
-        console.log("useefect suveikia");
         axios.get("/api/posts/"+id)
         .then(resp=>{
             setIsLoading(false)

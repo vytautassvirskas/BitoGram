@@ -7,6 +7,9 @@
    height: 100%;
 
 }
+.grey-hover:hover{
+    filter: invert(51%) sepia(0%) saturate(701%) hue-rotate(148deg) brightness(99%) contrast(78%);
+}
 .icon-wrapper:hover{
     cursor: pointer;
 

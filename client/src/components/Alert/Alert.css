@@ -1,5 +1,6 @@
 .message{
-   font-size: 18px
+   font-size: 14px;
+   margin: 20px auto 15px;
 }
 
 .success{

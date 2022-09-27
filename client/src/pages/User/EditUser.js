@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import MainContext from '../../context/MainContext'
+import Alert from '../../components/Alert/Alert';
 
 
 const EditUser = () => {
@@ -48,10 +49,7 @@ const EditUser = () => {
     .then(resp=>{
       setRefresh(!refresh)
       console.log(resp.data);
-      setAlert({
-        message: resp.data,
-        status: "success"
-      })
+
       navigate("/user/"+id)
 
     })
@@ -122,6 +120,7 @@ const EditUser = () => {
                           onChange={handleForm}
                         />                   
                     </div>
+                    <Alert/>
                     <button className='main-btn'>Save</button>
                 </form>
             </div>

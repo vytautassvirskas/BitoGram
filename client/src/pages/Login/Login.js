@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import MainContext from '../../context/MainContext'
+import Alert from '../../components/Alert/Alert.js'
 import "./Login.css"
 
 const Login = () => {
@@ -29,10 +30,6 @@ const Login = () => {
             setLoggedIn(true);
             setUserInfo(resp.data.user)
             console.log(resp.data);
-            setAlert({
-                message: resp.data.message,
-                status: "success"
-            })
             navigate("/explore")
         })
         .catch(error=>{
@@ -81,6 +78,7 @@ const Login = () => {
                         placeholder="Password"
                         />                   
                     </div>
+                    <Alert/>
                     <button className='main-btn'>Log in</button>
                 </form>
             </div>

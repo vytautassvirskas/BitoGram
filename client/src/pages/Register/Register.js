@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import MainContext from '../../context/MainContext'
+import Alert from '../../components/Alert/Alert';
 import "../Login/Login.css"
 import "./Register.css"
 
@@ -103,6 +104,7 @@ const Register = () => {
                         placeholder="Password"
                         />                   
                     </div>
+                    <Alert/>
                     <button className='main-btn'>Sign up</button>
                 </form>
             </div>

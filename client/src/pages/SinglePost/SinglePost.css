@@ -31,8 +31,8 @@
 .comment-section{
     height: 100%;
     width: 90%;
-    border-top: 1px solid rgb(219,219,219);
-    border-bottom: 1px solid rgb(219,219,219);
+    /* border-top: 1px solid rgb(219,219,219);
+    border-bottom: 1px solid rgb(219,219,219); */
     overflow: overlay;
 }
 

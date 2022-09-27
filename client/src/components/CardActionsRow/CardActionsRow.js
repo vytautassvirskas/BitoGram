@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { Link } from 'react-router-dom';
 import axios from "axios"
 
 
@@ -33,7 +34,9 @@ const CardActionsRow = (props) => {
             )
             }
           </div>
-          <CommentsIcon/>
+          <Link to={`/post/${post.id}`}>
+            <CommentsIcon/>
+          </Link>
     </div>
   )
 }

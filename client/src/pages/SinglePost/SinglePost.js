@@ -6,6 +6,7 @@ import "./SinglePost.css"
 import MainContext from '../../context/MainContext'
 import CardTop from '../../components/CardTop/CardTop.js';
 import CardActionsRow from '../../components/CardActionsRow/CardActionsRow';
+import TotalLikes from '../../components/TotalLikes/TotalLikes';
 
 const SinglePost = () => {
     const{liked}=useContext(MainContext)
@@ -58,6 +59,8 @@ const SinglePost = () => {
     )
     :
     (
+        <>
+       
         <div className='single-post'>
             <div className='single-post-left'>
                 <img 
@@ -87,6 +90,9 @@ const SinglePost = () => {
                 </div>
                 <CardActionsRow
                 post={post}/>
+               <TotalLikes
+                totalLikes={post.likes.length}
+                />
                 <form className='comment-form' onSubmit={(e)=>handleSubmit(e)}>
                     <div className='emoji-img-wrapper'>
                         <img className='emoji-img'
@@ -105,6 +111,7 @@ const SinglePost = () => {
                 </form>
             </div>
         </div>
+        </>
        
 
     )}

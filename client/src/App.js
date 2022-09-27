@@ -15,7 +15,6 @@ import NotFound from './pages/NotFound/NotFound';
 import SinglePost from './pages/SinglePost/SinglePost';
 import NewPost from './pages/NewPost/NewPost';
 
-import Alert from "./components/Alert/Alert"
 import './App.css';
 import MainContext from './context/MainContext';
 
@@ -53,7 +52,6 @@ function App() {
    <MainContext.Provider value={contextValues}>
     {loggedIn&&(<Header></Header>)}
     <div className='container'>
-      <Alert/>
       <Routes>
         <Route path="/" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>

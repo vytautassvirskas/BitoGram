@@ -1,4 +1,5 @@
 import express from "express";
+import {Op} from "sequelize"
 import db from "../database/connect.js"
 import bcrypt from 'bcrypt';
 import { registerValidator, loginValidator,userEditingValidator } from "../middleware/validate.js";
@@ -87,22 +88,12 @@ router.get("/check-auth",auth, async(req,res)=>{
 router.get("/search/:keyword",auth, async (req,res)=>{
     console.log(req.params)
     try {
-        const posts = await db.Posts.findAll({
-            where: {
-                '$Accounts.userName$': { [Op.like]: `%${req.params.keyword}%`}
-              },
-              include: [{
-                model: db.Users,
-                as: 'Accounts'
-              }]
-            // include: [db.Users, db.Likes, db.Comments],
-            // where:{
-            //     userName: {
-            //         [Op.like]: `%${req.params.keyword}%`
-            //     }
-            // }
+        const users = await db.Users.findAll({
+            where:{
+                userName: {[Op.like]: "%"+req.params.keyword+"%"}
+            }
         })
-        res.json(posts)
+        res.json(users)
     } catch {
 
         res.status(500).send("Įvyko serverio klaida")

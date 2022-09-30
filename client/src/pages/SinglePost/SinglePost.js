@@ -74,7 +74,7 @@ const SinglePost = () => {
                     {post.comments && post.comments.map(comment=>
                         <div className='comment-wrapepr' key={comment.id}>
                             <div className='comment-photo-wrapper'>
-                                {comment.user.image ?
+                                {comment.user?.image ?
                                 <img src={comment.user.image} alt="user" />
                                 :
                                 <img src="https://www.svgrepo.com/show/361411/account.svg" alt="user" />

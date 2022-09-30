@@ -1,16 +1,30 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import {Link} from "react-router-dom"
 import axios from 'axios'
 
 import MainContext from '../../context/MainContext'
+import SearchedUser from '../SearchedUser/SearchedUser'
 import "./Header.css"
 
 const Header = () => {
   const {userInfo} = useContext(MainContext)
+  const [searchedUsers,setSearchedUsers]=useState([])
+  const [isSearched,setIsSearched]=useState(false)
+  
 
+  console.log(searchedUsers)
   const handleSearch = (e) => {
-    console.log(e.target.value)
+    // if(e.target.value==="") return setSearchedUsers([])
+
     axios.get("/api/users/search/"+e.target.value)
+    .then(resp=>{
+      setIsSearched(true)
+      setSearchedUsers(resp.data)
+      console.log(resp.data);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
 
   }
 
@@ -62,10 +76,17 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-
-
-
       </nav>
+      <div className='searched-users-container'>
+        {searchedUsers ? searchedUsers.map(user=>
+           <
+            SearchedUser 
+            key={user.id} 
+            user={user}
+          />
+        ): <p className='no-results-search'>No results found.</p>}
+      
+      </div>
     </header>
   )
 }

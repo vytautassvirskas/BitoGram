@@ -11,11 +11,16 @@ const CardTop = (props) => {
     <div className='card-top'>
           <div className='user-info-wrapper'>
             <Link to={"/user/"+post.userId}>
-            <img 
-              className='card-img' 
-              // be klaustuku neveikia ant single post
-              src={post.user.image}
-              alt="user" />
+              {post.user.image 
+              ?
+              <img 
+                className='card-img' 
+                // be klaustuku neveikia ant single post
+                src={post.user.image}
+                alt="user" />
+                :
+                <img src="https://www.svgrepo.com/show/361411/account.svg" alt="user" />
+             }
             </Link>
             <Link to={"/user/"+post.userId}>
               <span className='card-username'>{post.user.userName}</span>

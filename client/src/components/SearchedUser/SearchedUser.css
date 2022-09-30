@@ -1,0 +1,35 @@
+.searched-user-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    padding: 8px 16px;
+    width: 100%;
+    text-decoration: none;
+}
+.searched-user-wrapper:hover{
+    background-color: #FAFAFA;
+    cursor: pointer;
+}
+
+.searched-user-wrapper img{
+    width:44px;
+    height: 44px;
+    border-radius: 50%;
+    vertical-align: top;
+    object-fit: cover;
+    object-position: top;
+    margin-right: 15px;
+}
+.searched-user-wrapper p{
+    margin:0;
+    font-size: 14px;
+}
+.searched-user-wrapper p:first-child{
+    font-weight: 500;
+    color: #262626;
+}
+.searched-user-wrapper p:last-child{
+    font-weight: 400;
+    color: #8e8e8e;
+    margin-top: 4px;
+}

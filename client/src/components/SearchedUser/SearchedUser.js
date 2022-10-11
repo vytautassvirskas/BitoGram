@@ -12,7 +12,6 @@ const SearchedUser = (props) => {
                 ?
                 <img 
                     className='card-img' 
-                    // be klaustuku neveikia ant single post
                     src={user.image}
                     alt="user" />
                     :

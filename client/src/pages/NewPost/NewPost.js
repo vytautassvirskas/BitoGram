@@ -8,7 +8,7 @@ const NewPost = () => {
     const {userInfo} = useContext(MainContext)
     const [form, setForm] =useState({
         caption:"",
-        photo:""
+        image:"" 
     })
     const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ const NewPost = () => {
                 <h2 className='add-text'>Create new post</h2>
                 <form action="" onSubmit={(e) => handleSubmit(e)}>
                     <div className='input-wrapper'>
-                        {/* <label htmlFor='firstName'>Email</label> */}
+                        <label htmlFor='firstName'></label>
                         <input 
                         id="caption"
                         type="text"
@@ -57,7 +57,7 @@ const NewPost = () => {
                         />
                     </div>
                     <div className='input-wrapper'>
-                        {/* <label htmlFor='password'>Password</label> */}
+                        <label htmlFor='password'></label>
                         <input 
                         id="image"
                         type="file"

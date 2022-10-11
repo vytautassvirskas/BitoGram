@@ -15,7 +15,6 @@ const CardTop = (props) => {
               ?
               <img 
                 className='card-img' 
-                // be klaustuku neveikia ant single post
                 src={post.user.image}
                 alt="user" />
                 :
